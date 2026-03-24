@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="es">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Smart3AI | Soluciones digitales para crecimiento inteligente</title>
+	<meta name="description" content="Smart3AI construye productos de software para acelerar operaciones, calidad y crecimiento comercial. Descubre ISO Smart y el ecosistema en expansión." />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+	<style>
+		:root {
+			--bg: #f7f8f4;
+			--ink: #1c2d24;
+			--muted: #5b6f64;
+			--card: #ffffff;
+			--accent: #1b8a5a;
+			--accent-dark: #136845;
+			--warm: #e8d7a6;
+			--line: #d9e3dc;
+		}
+
+		* { box-sizing: border-box; }
+		body {
+			margin: 0;
+			font-family: Manrope, sans-serif;
+			background:
+				radial-gradient(circle at 10% 10%, #e7f5ec 0%, transparent 30%),
+				radial-gradient(circle at 90% 10%, #fff0cf 0%, transparent 25%),
+				var(--bg);
+			color: var(--ink);
+		}
+
+		.container { width: min(1100px, 92vw); margin: 0 auto; }
+
+		header {
+			position: sticky;
+			top: 0;
+			backdrop-filter: blur(10px);
+			background: rgba(247, 248, 244, 0.85);
+			border-bottom: 1px solid var(--line);
+			z-index: 20;
+		}
+
+		.nav {
+			height: 74px;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		.logo {
+			font-family: "Space Grotesk", sans-serif;
+			font-size: 1.25rem;
+			font-weight: 700;
+			letter-spacing: 0.02em;
+		}
+
+		.logo span { color: var(--accent); }
+
+		.cta {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			border: 0;
+			border-radius: 12px;
+			padding: 0.8rem 1rem;
+			font-weight: 700;
+			text-decoration: none;
+			cursor: pointer;
+			transition: transform .2s ease, background .2s ease;
+		}
+
+		.cta.primary { background: var(--accent); color: #fff; }
+		.cta.primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+		.cta.ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+
+		.hero {
+			padding: 5.2rem 0 3.2rem;
+			display: grid;
+			grid-template-columns: 1.15fr .85fr;
+			gap: 1.4rem;
+			align-items: center;
+		}
+
+		.eyebrow {
+			display: inline-block;
+			border: 1px solid #c8ddcf;
+			background: #ecf7f0;
+			color: #1f6b48;
+			border-radius: 999px;
+			padding: .35rem .8rem;
+			font-weight: 700;
+			font-size: .78rem;
+			margin-bottom: .9rem;
+		}
+
+		h1 {
+			margin: 0;
+			font-size: clamp(2rem, 4vw, 3.5rem);
+			line-height: 1.08;
+			font-family: "Space Grotesk", sans-serif;
+		}
+
+		.hero p {
+			color: var(--muted);
+			font-size: 1.04rem;
+			margin: 1rem 0 1.4rem;
+			max-width: 58ch;
+		}
+
+		.hero-actions { display: flex; gap: .7rem; flex-wrap: wrap; }
+
+		.stat-card {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-radius: 20px;
+			padding: 1.2rem;
+			box-shadow: 0 12px 30px rgba(22, 38, 30, .08);
+			animation: rise .65s ease both;
+		}
+
+		.stat-grid {
+			display: grid;
+			gap: .8rem;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		.stat-card h3 { margin: 0; font-size: 1.6rem; }
+		.stat-card p { margin: .3rem 0 0; color: var(--muted); font-size: .9rem; }
+
+		section { padding: 2rem 0 1.2rem; }
+		.section-title { font-family: "Space Grotesk", sans-serif; font-size: 1.8rem; margin: 0 0 1rem; }
+
+		.products {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: .9rem;
+		}
+
+		.product {
+			background: var(--card);
+			border: 1px solid var(--line);
+			border-radius: 16px;
+			padding: 1.1rem;
+			transition: transform .2s ease, box-shadow .2s ease;
+		}
+
+		.product:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(28,45,36,.08); }
+		.product h3 { margin: .2rem 0; }
+		.product p { margin: .4rem 0 1rem; color: var(--muted); }
+
+		.band {
+			margin: 2.4rem 0 3rem;
+			background: linear-gradient(135deg, #1f6b48, #215f76);
+			border-radius: 20px;
+			color: #fff;
+			padding: 1.4rem;
+			display: flex;
+			justify-content: space-between;
+			gap: 1rem;
+			align-items: center;
+			flex-wrap: wrap;
+		}
+
+		footer {
+			border-top: 1px solid var(--line);
+			padding: 1rem 0 2rem;
+			color: var(--muted);
+			font-size: .92rem;
+			text-align: center;
+		}
+
+		@keyframes rise {
+			from { opacity: 0; transform: translateY(14px); }
+			to { opacity: 1; transform: translateY(0); }
+		}
+
+		@media (max-width: 900px) {
+			.hero { grid-template-columns: 1fr; }
+			.products { grid-template-columns: 1fr; }
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="container nav">
+			<div class="logo">Smart<span>3AI</span></div>
+			<a class="cta primary" href="isosmart.html">Conocer ISO Smart</a>
+		</div>
+	</header>
+
+	<main class="container">
+		<section class="hero">
+			<div>
+				<span class="eyebrow">Escala tus operaciones con inteligencia aplicada</span>
+				<h1>Construimos productos que convierten estrategia en resultados medibles.</h1>
+				<p>
+					Smart3AI impulsa equipos que quieren crecer sin perder control operativo. Empezamos con
+					ISO Smart y seguimos expandiendo un portafolio de aplicaciones para calidad, cumplimiento y rendimiento.
+				</p>
+				<div class="hero-actions">
+					<a class="cta primary" href="isosmart.html">Ver propuesta ISO Smart</a>
+					<a class="cta ghost" href="#productos">Explorar ecosistema</a>
+				</div>
+			</div>
+			<div class="stat-grid" aria-label="Indicadores comerciales">
+				<article class="stat-card"><h3>+40%</h3><p>Aceleración esperada en ejecución de planes de calidad</p></article>
+				<article class="stat-card"><h3>24/7</h3><p>Disponibilidad de soporte operativo asistido por IA</p></article>
+				<article class="stat-card"><h3>1 solo panel</h3><p>Control centralizado de productos y organizaciones</p></article>
+				<article class="stat-card"><h3>B2B</h3><p>Diseñado para empresas que necesitan trazabilidad real</p></article>
+			</div>
+		</section>
+
+		<section id="productos">
+			<h2 class="section-title">Ecosistema Smart3AI</h2>
+			<div class="products">
+				<article class="product">
+					<h3>ISO Smart</h3>
+					<p>Plataforma para gestión de calidad, auditoría, riesgos y mejora continua con enfoque accionable.</p>
+					<a class="cta ghost" href="isosmart.html">Ir a ISO Smart</a>
+				</article>
+				<article class="product">
+					<h3>AdminApps</h3>
+					<p>Centro de control para administrar aplicaciones, organizaciones, usuarios y crecimiento del portafolio.</p>
+				</article>
+				<article class="product">
+					<h3>Próximos productos</h3>
+					<p>Estamos preparando nuevas soluciones para operaciones, cumplimiento y automatización comercial.</p>
+				</article>
+			</div>
+		</section>
+
+		<section class="band">
+			<div>
+				<h3 style="margin:.1rem 0 .4rem;font-size:1.35rem;">Listo para vender con una narrativa sólida desde hoy</h3>
+				<p style="margin:0;opacity:.92;">Smart3AI combina producto, claridad comercial y ejecución técnica rápida.</p>
+			</div>
+			<a class="cta primary" style="background:#fff;color:#164a34;" href="mailto:felipe@smart3ai.com">Agendar demo</a>
+		</section>
+	</main>
+
+	<footer>
+		© 2026 Smart3AI. Todos los derechos reservados.
+	</footer>
+</body>
+</html>

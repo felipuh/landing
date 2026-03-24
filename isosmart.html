@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ISO Smart | Smart3AI</title>
+  <meta name="description" content="ISO Smart, la plataforma de Smart3AI para acelerar implementación, seguimiento y mejora de sistemas de gestión." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --ink: #202632;
+      --muted: #5d6778;
+      --accent: #0f766e;
+      --accent-2: #0a4f8f;
+      --card: #ffffff;
+      --line: #dce3ee;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: Manrope, sans-serif;
+      background:
+        radial-gradient(circle at 8% 8%, #d7f6f1 0%, transparent 28%),
+        radial-gradient(circle at 95% 0%, #dbeafe 0%, transparent 22%),
+        var(--bg);
+    }
+
+    .container { width: min(1060px, 92vw); margin: 0 auto; }
+
+    .top {
+      padding: 1rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
+    .brand span { color: var(--accent); }
+
+    .btn {
+      text-decoration: none;
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      color: var(--ink);
+      background: #fff;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1rem;
+      align-items: center;
+      padding: 2rem 0 1.6rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Space Grotesk", sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+    }
+
+    .hero p { color: var(--muted); font-size: 1.02rem; }
+
+    .pill {
+      display: inline-block;
+      margin-bottom: .8rem;
+      padding: .35rem .8rem;
+      border-radius: 999px;
+      background: #dff4f1;
+      color: #0d5f58;
+      border: 1px solid #b5e4de;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .cta-row { display: flex; gap: .7rem; flex-wrap: wrap; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border: 0; }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 10px 26px rgba(18, 39, 64, .07);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: .8rem;
+      margin: 1.2rem 0 2rem;
+    }
+
+    .grid h3 { margin: .2rem 0; }
+    .grid p { color: var(--muted); margin: 0; }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 1rem 0 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container top">
+    <div class="brand">Smart<span>3AI</span> / ISO Smart</div>
+    <a class="btn" href="index.html">Volver al inicio</a>
+  </div>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <span class="pill">Producto comercial activo</span>
+        <h1>ISO Smart: gestión ISO accionable para equipos que ejecutan.</h1>
+        <p>
+          ISO Smart integra planificación, operaciones, desempeño y mejora continua en una experiencia unificada,
+          con apoyo de IA para acelerar decisiones y mantener trazabilidad.
+        </p>
+        <div class="cta-row">
+          <a class="btn primary" href="mailto:felipe@smart3ai.com?subject=Demo%20ISO%20Smart">Solicitar demo</a>
+          <a class="btn" href="mailto:felipe@smart3ai.com?subject=Pricing%20ISO%20Smart">Consultar pricing</a>
+        </div>
+      </div>
+      <aside class="card">
+        <h3 style="margin-top:0;">Resultados que busca un cliente</h3>
+        <ul style="margin:.6rem 0 0; padding-left:1.1rem; color:var(--muted); line-height:1.6;">
+          <li>Menos tiempo en preparación de auditorías.</li>
+          <li>Más claridad de responsables y evidencias por cláusula.</li>
+          <li>Seguimiento real de riesgos, acciones y objetivos.</li>
+          <li>Adopción progresiva por módulos sin fricción.</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="grid" aria-label="Capacidades clave de ISO Smart">
+      <article class="card">
+        <h3>Contexto y liderazgo</h3>
+        <p>Mapea contexto, partes interesadas, alcance y compromisos directivos con estructura clara.</p>
+      </article>
+      <article class="card">
+        <h3>Operación y control</h3>
+        <p>Gestiona documentos, procesos, controles y evidencias en un flujo ordenado.</p>
+      </article>
+      <article class="card">
+        <h3>Mejora continua</h3>
+        <p>Convierte hallazgos en acciones correctivas medibles y con trazabilidad total.</p>
+      </article>
+    </section>
+  </main>
+
+  <div class="footer">© 2026 ISO Smart by Smart3AI.</div>
+</body>
+</html>
