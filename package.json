@@ -4,7 +4,7 @@
 	"private": true,
 	"description": "Landing comercial de Smart3AI e ISO Smart",
 	"scripts": {
-		"dev": "python3 -m http.server 4173",
-		"start": "python3 -m http.server 4173"
+		"dev": "node server.mjs",
+		"start": "node server.mjs"
 	}
 }
