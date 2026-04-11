@@ -1,13 +1,25 @@
 :root {
-  --ink-strong: #0a2138;
-  --ink-soft: #35506a;
-  --surface: #f4f7f2;
+  --ink-strong: #0f172a;
+  --ink-soft: #334155;
+  --surface: #f1f5f9;
   --card: #ffffff;
-  --line: #c7d6e4;
-  --brand: #006e7f;
-  --brand-deep: #04405d;
-  --accent: #e37a2f;
+  --line: #d7deea;
+  --brand: #2563eb;
+  --brand-deep: #1e40af;
+  --accent: #0ea5e9;
   --good: #0f8f61;
+}
+
+:root[data-theme='dark'] {
+  --ink-strong: #e2e8f0;
+  --ink-soft: #94a3b8;
+  --surface: #0b1220;
+  --card: #111a2d;
+  --line: #253451;
+  --brand: #60a5fa;
+  --brand-deep: #2563eb;
+  --accent: #38bdf8;
+  --good: #34d399;
 }
 
 * {
@@ -26,6 +38,7 @@ body {
 body {
   min-height: 100vh;
   position: relative;
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
 .bg-atmosphere {
@@ -49,7 +62,7 @@ body {
   z-index: 30;
   border-bottom: 1px solid rgba(7, 39, 63, 0.08);
   backdrop-filter: blur(8px);
-  background: rgba(244, 247, 242, 0.88);
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
 }
 
 .nav {
@@ -110,6 +123,15 @@ body {
   transition: 180ms ease;
 }
 
+.btn:focus-visible,
+.menu a:focus-visible,
+button:focus-visible,
+select:focus-visible,
+input:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--brand) 42%, transparent);
+  outline-offset: 2px;
+}
+
 .btn-primary {
   background: linear-gradient(140deg, var(--brand), var(--brand-deep));
   color: #fff;
@@ -122,9 +144,18 @@ body {
 }
 
 .btn-ghost {
-  background: rgba(255, 255, 255, 0.72);
+  background: color-mix(in srgb, var(--card) 85%, transparent);
   border-color: var(--line);
   color: var(--ink-strong);
+}
+
+.control-select {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 0.55rem 0.65rem;
+  background: color-mix(in srgb, var(--card) 86%, transparent);
+  color: var(--ink-strong);
+  font-weight: 700;
 }
 
 .hero {
@@ -342,6 +373,25 @@ select {
   opacity: 0;
   transform: translateY(6px);
   animation: rise 320ms ease forwards;
+}
+
+.card-hover,
+.value-grid article,
+.intent-band article,
+.decision-grid article,
+.ab-card,
+.ab-variant-grid article {
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.value-grid article:hover,
+.intent-band article:hover,
+.decision-grid article:hover,
+.ab-card:hover,
+.ab-variant-grid article:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--brand) 40%, var(--line));
+  box-shadow: 0 10px 26px -18px color-mix(in srgb, var(--brand) 65%, transparent);
 }
 
 .twin-list {

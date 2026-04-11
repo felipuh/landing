@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/landing.css" />
+  <link rel="stylesheet" href="/static/vendor/sweetalert2.min.css?v=20260411" />
+  <link rel="stylesheet" href="/static/landing.css?v=20260411" />
 </head>
 <body>
   <div class="bg-atmosphere" aria-hidden="true"></div>
@@ -19,15 +20,22 @@
         Smart3AI
       </a>
       <nav class="menu" aria-label="Navegacion principal">
-        <a href="#ecosistema">Ecosistema</a>
-        <a href="#como-funciona">Onboarding IA</a>
-        <a href="#industrias">Industrias</a>
-        <a href="#decisores">Perfiles</a>
-        <a href="#resultado-financiero">Resultado financiero</a>
+        <a href="#ecosistema" data-i18n="nav_ecosystem">Ecosistema</a>
+        <a href="#como-funciona" data-i18n="nav_onboarding">Onboarding IA</a>
+        <a href="#industrias" data-i18n="nav_industries">Industrias</a>
+        <a href="#decisores" data-i18n="nav_profiles">Perfiles</a>
+        <a href="#resultado-financiero" data-i18n="nav_finance">Resultado financiero</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-ghost" href="/isosmart.html">Ver producto</a>
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20IsoSmart">Agendar demo</a>
+        <a class="btn btn-ghost" href="http://127.0.0.1:3000/login" data-i18n="adminapps_access">Acceso AdminApps</a>
+        <a class="btn btn-ghost" href="/isosmart.html" data-i18n="view_product">Ver producto</a>
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20IsoSmart" data-i18n="book_demo">Agendar demo</a>
+        <select id="languageSelect" class="control-select" aria-label="Idioma">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="pt">PT</option>
+        </select>
+        <button id="themeToggle" class="btn btn-ghost" type="button" data-i18n="theme_toggle">Modo oscuro</button>
       </div>
     </div>
   </header>
@@ -38,15 +46,14 @@
         <p id="heroEyebrow" class="eyebrow">Smart3AI | plataforma matriz de aplicaciones B2B</p>
         <p id="abChip" class="ab-chip" aria-live="polite"></p>
         <div class="persona-switch" role="tablist" aria-label="Perfil del visitante">
-          <button class="persona-tab active" data-persona="ceo" role="tab" aria-selected="true">Dueño / Gerencia</button>
-          <button class="persona-tab" data-persona="quality" role="tab" aria-selected="false">Líder de Calidad</button>
-          <button class="persona-tab" data-persona="ops" role="tab" aria-selected="false">Operaciones</button>
+          <button id="personaTabCeo" class="persona-tab active" data-persona="ceo" role="tab" aria-selected="true">Dueño / Gerencia</button>
+          <button id="personaTabQuality" class="persona-tab" data-persona="quality" role="tab" aria-selected="false">Líder de Calidad</button>
+          <button id="personaTabOps" class="persona-tab" data-persona="ops" role="tab" aria-selected="false">Operaciones</button>
         </div>
         <h1 id="heroTitle">Convierte calidad y operación en decisiones de negocio con IA.</h1>
         <p id="heroLead" class="lead">
           Smart3AI desarrolla un ecosistema de aplicaciones para crecimiento operativo en Latinoamérica.
-          IsoSmart es el producto insignia para ISO 9001 con onboarding conversacional IA. AdminApps es el centro de control
-          para gobernar organizaciones, usuarios y productos del portafolio.
+          IsoSmart es el producto insignia para ISO 9001 con onboarding conversacional IA y ejecución guiada.
         </p>
         <div class="hero-actions">
           <a id="heroPrimaryCta" class="btn btn-primary" href="#demo" data-cta-intent="evaluar" data-cta-location="hero">Probar demo conversacional</a>
@@ -56,15 +63,15 @@
         <ul class="hero-metrics" aria-label="Indicadores de impacto">
           <li>
             <strong>30 min</strong>
-            <span>de onboarding consultivo</span>
+            <span id="metricOnboarding">de onboarding consultivo</span>
           </li>
           <li>
             <strong>3 motores IA</strong>
-            <span>priorizados por IA</span>
+            <span id="metricAi">priorizados por IA</span>
           </li>
           <li>
-            <strong>AdminApps</strong>
-            <span>centro de control multiapp</span>
+            <strong>Smart3AI</strong>
+            <span id="metricEcosystem">ecosistema B2B escalable</span>
           </li>
         </ul>
       </div>
@@ -72,41 +79,41 @@
       <aside id="demo" class="demo-card reveal" aria-label="Demo conversacional de onboarding">
         <header class="demo-head">
           <div>
-            <p class="demo-title">Demo ISO Coach</p>
-            <p class="demo-sub">Selecciona el lenguaje y sector para simular el onboarding</p>
+            <p id="demoTitle" class="demo-title">Demo ISO Coach</p>
+            <p id="demoSub" class="demo-sub">Selecciona el lenguaje y sector para simular el onboarding</p>
           </div>
-          <span class="live-pill">En vivo</span>
+          <span id="demoLivePill" class="live-pill">En vivo</span>
         </header>
 
         <div class="demo-controls">
           <label>
-            Lenguaje
+            <span id="toneLabel">Lenguaje</span>
             <select id="toneSelect">
-              <option value="gerencial">Gerencial</option>
-              <option value="tecnico">Tecnico</option>
+              <option id="toneOptionManagerial" value="gerencial">Gerencial</option>
+              <option id="toneOptionTechnical" value="tecnico">Tecnico</option>
             </select>
           </label>
           <label>
-            Industria
+            <span id="industryLabel">Industria</span>
             <select id="industrySelect">
-              <option value="manufactura">Manufactura</option>
-              <option value="servicios">Servicios</option>
-              <option value="distribucion">Importacion / Distribucion</option>
+              <option id="industryOptionManufacturing" value="manufactura">Manufactura</option>
+              <option id="industryOptionServices" value="servicios">Servicios</option>
+              <option id="industryOptionDistribution" value="distribucion">Importacion / Distribucion</option>
             </select>
           </label>
         </div>
 
         <div class="demo-panels">
           <div class="panel left">
-            <h3>ISO Coach</h3>
+            <h3 id="coachPanelTitle">ISO Coach</h3>
             <div id="chatLines" class="chat-lines"></div>
           </div>
           <div class="panel right">
-            <h3>Gemelo Digital ISO</h3>
+            <h3 id="digitalTwinTitle">Gemelo Digital ISO</h3>
             <ul id="digitalTwin" class="twin-list"></ul>
             <div class="progress-box">
               <div class="progress-label">
-                <span>Sistema base construido</span>
+                <span id="progressLabel">Sistema base construido</span>
                 <strong id="progressValue">20%</strong>
               </div>
               <div class="progress-track">
@@ -147,7 +154,7 @@
       </article>
       <article>
         <h3>AdminApps (control center)</h3>
-        <p>Backoffice central para organizaciones, suscripciones y gobierno de todas las apps Smart3AI.</p>
+        <p>Plataforma interna para colaboradores Smart3AI (acceso restringido por rol).</p>
       </article>
     </section>
 
@@ -187,9 +194,9 @@
         <h2>Mensajes por industria en una sola experiencia</h2>
       </div>
       <div class="industry-tabs" role="tablist" aria-label="Industrias">
-        <button class="tab active" data-tab="manufactura" role="tab" aria-selected="true">Manufactura</button>
-        <button class="tab" data-tab="servicios" role="tab" aria-selected="false">Servicios</button>
-        <button class="tab" data-tab="distribucion" role="tab" aria-selected="false">Importacion / Distribucion</button>
+        <button id="tabManufacturing" class="tab active" data-tab="manufactura" role="tab" aria-selected="true">Manufactura</button>
+        <button id="tabServices" class="tab" data-tab="servicios" role="tab" aria-selected="false">Servicios</button>
+        <button id="tabDistribution" class="tab" data-tab="distribucion" role="tab" aria-selected="false">Importacion / Distribucion</button>
       </div>
       <div id="industryPanel" class="industry-panel" role="tabpanel"></div>
     </section>
@@ -330,6 +337,7 @@
     </div>
   </footer>
 
-  <script src="/static/landing.js" defer></script>
+  <script src="/static/vendor/sweetalert2.all.min.js?v=20260411" defer></script>
+  <script src="/static/landing.js?v=20260411" defer></script>
 </body>
 </html>

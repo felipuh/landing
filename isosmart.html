@@ -8,7 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/landing.css" />
+  <link rel="stylesheet" href="/static/vendor/sweetalert2.min.css?v=20260411" />
+  <link rel="stylesheet" href="/static/landing.css?v=20260411" />
 </head>
 <body>
   <div class="bg-atmosphere" aria-hidden="true"></div>
@@ -20,13 +21,19 @@
         Smart3AI / IsoSmart
       </a>
       <nav class="menu" aria-label="Navegacion de producto">
-        <a href="#capacidades">Capacidades</a>
-        <a href="#flujo">Flujo</a>
-        <a href="#activacion">Activacion</a>
+        <a href="#capacidades" data-i18n="iso_nav_capabilities">Capacidades</a>
+        <a href="#flujo" data-i18n="iso_nav_flow">Flujo</a>
+        <a href="#activacion" data-i18n="iso_nav_activation">Activacion</a>
       </nav>
       <div class="nav-actions">
-        <a class="btn btn-ghost" href="/index.html">Volver a landing</a>
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20de%20producto%20IsoSmart">Solicitar demo</a>
+        <a class="btn btn-ghost" href="/index.html" data-i18n="iso_back_home">Volver a landing</a>
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20de%20producto%20IsoSmart" data-i18n="iso_request_demo">Solicitar demo</a>
+        <select id="languageSelect" class="control-select" aria-label="Idioma">
+          <option value="es">ES</option>
+          <option value="en">EN</option>
+          <option value="pt">PT</option>
+        </select>
+        <button id="themeToggle" class="btn btn-ghost" type="button" data-i18n="theme_toggle">Modo oscuro</button>
       </div>
     </div>
   </header>
@@ -34,32 +41,32 @@
   <main>
     <section class="hero container">
       <div class="hero-copy reveal">
-        <p class="eyebrow">Producto B2B especializado</p>
-        <h1>IsoSmart: producto de Smart3AI para ejecutar ISO con impacto financiero.</h1>
-        <p class="lead">
+        <p class="eyebrow" data-i18n="iso_eyebrow">Producto B2B especializado</p>
+        <h1 data-i18n="iso_h1">IsoSmart: producto de Smart3AI para ejecutar ISO con impacto financiero.</h1>
+        <p class="lead" data-i18n="iso_lead">
           IsoSmart no solo organiza cumplimiento: transforma tu sistema de gestion en un motor de decisiones, ahorro y cuidado del cliente.
-          AdminApps centraliza la operación del ecosistema Smart3AI para escalar nuevos productos sin perder control.
+          Todo el diseño de producto prioriza claridad, trazabilidad y ejecución continua para equipos ISO.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activar%20Prueba%20IsoSmart">Activar prueba guiada</a>
-          <a class="btn btn-ghost" href="/index.html#demo">Ver onboarding conversacional</a>
-          <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Evaluar%20ROI%20con%20IsoSmart">Evaluar ROI con mi equipo</a>
+          <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activar%20Prueba%20IsoSmart" data-i18n="iso_activate_trial">Activar prueba guiada</a>
+          <a class="btn btn-ghost" href="/index.html#demo" data-i18n="iso_view_onboarding">Ver onboarding conversacional</a>
+          <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Evaluar%20ROI%20con%20IsoSmart" data-i18n="iso_eval_roi">Evaluar ROI con mi equipo</a>
         </div>
       </div>
 
       <aside class="demo-card reveal">
         <header class="demo-head">
           <div>
-            <p class="demo-title">Resumen de valor en 30 minutos</p>
-            <p class="demo-sub">Resultados que recibe el equipo al cerrar onboarding</p>
+            <p class="demo-title" data-i18n="iso_value_30">Resumen de valor en 30 minutos</p>
+            <p class="demo-sub" data-i18n="iso_onboarding_results">Resultados que recibe el equipo al cerrar onboarding</p>
           </div>
         </header>
         <ul class="twin-list">
-          <li><span>Alcance del SGC v1</span><strong>Generado</strong></li>
-          <li><span>Mapa de procesos inicial</span><strong>Generado</strong></li>
-          <li><span>Top 5 riesgos/oportunidades</span><strong>Generado</strong></li>
-          <li><span>Politica de calidad borrador</span><strong>Generado</strong></li>
-          <li><span>Roadmap 3-6-12 meses</span><strong>Generado</strong></li>
+          <li><span id="isoTwinScope">Alcance del SGC v1</span><strong id="isoTwinScopeStatus">Generado</strong></li>
+          <li><span id="isoTwinMap">Mapa de procesos inicial</span><strong id="isoTwinMapStatus">Generado</strong></li>
+          <li><span id="isoTwinRisks">Top 5 riesgos/oportunidades</span><strong id="isoTwinRisksStatus">Generado</strong></li>
+          <li><span id="isoTwinPolicy">Politica de calidad borrador</span><strong id="isoTwinPolicyStatus">Generado</strong></li>
+          <li><span id="isoTwinRoadmap">Roadmap 3-6-12 meses</span><strong id="isoTwinRoadmapStatus">Generado</strong></li>
         </ul>
       </aside>
     </section>
@@ -67,18 +74,18 @@
     <section class="container intent-band reveal" aria-label="Activación de producto">
       <article>
         <p class="tag">Explorar</p>
-        <h3>Revisar encaje por industria</h3>
-        <a class="btn btn-ghost" href="/index.html#industrias">Comparar casos</a>
+        <h3 id="isoIntentExploreTitle">Revisar encaje por industria</h3>
+        <a id="isoIntentExploreCta" class="btn btn-ghost" href="/index.html#industrias">Comparar casos</a>
       </article>
       <article>
         <p class="tag">Evaluar</p>
-        <h3>Demo con dirección y calidad</h3>
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20conjunta%20Direccion%20y%20Calidad">Agendar sesión conjunta</a>
+        <h3 id="isoIntentEvaluateTitle">Demo con dirección y calidad</h3>
+        <a id="isoIntentEvaluateCta" class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20conjunta%20Direccion%20y%20Calidad">Agendar sesión conjunta</a>
       </article>
       <article>
         <p class="tag">Activar</p>
-        <h3>Inicio inmediato del onboarding</h3>
-        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Activar%20onboarding%20inmediato">Solicitar activación</a>
+        <h3 id="isoIntentActivateTitle">Inicio inmediato del onboarding</h3>
+        <a id="isoIntentActivateCta" class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Activar%20onboarding%20inmediato">Solicitar activación</a>
       </article>
     </section>
 
@@ -96,8 +103,8 @@
         <p>Se conserva el tono elegido en todo el sistema para alinear lideres y equipos.</p>
       </article>
       <article>
-        <h3>Conectado a AdminApps</h3>
-        <p>Gobierna organizaciones, usuarios, finanzas y crecimiento del portafolio desde un control center único.</p>
+        <h3>Arquitectura escalable</h3>
+        <p>Diseñado para crecer por unidades, sedes y equipos sin perder consistencia operativa.</p>
       </article>
     </section>
 
@@ -117,22 +124,23 @@
     </section>
 
     <section id="activacion" class="container final-cta reveal">
-      <h2>Activa IsoSmart y entra con una sesion guiada desde el dia 1.</h2>
-      <p>Implementacion preparada para mercado latinoamericano: claridad comercial, soporte operativo y resultados trazables.</p>
+        <h2 data-i18n="iso_cta_title">Activa IsoSmart y entra con una sesion guiada desde el dia 1.</h2>
+        <p data-i18n="iso_cta_desc">Implementacion preparada para mercado latinoamericano: claridad comercial, soporte operativo y resultados trazables.</p>
       <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activacion%20de%20IsoSmart">Iniciar ahora</a>
-        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Pricing%20IsoSmart">Consultar pricing</a>
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activacion%20de%20IsoSmart" data-i18n="iso_start_now">Iniciar ahora</a>
+        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Pricing%20IsoSmart" data-i18n="iso_check_pricing">Consultar pricing</a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-row">
-      <p>© 2026 Smart3AI | IsoSmart integrado a AdminApps</p>
+      <p>© 2026 Smart3AI | IsoSmart</p>
       <a href="/index.html">Landing corporativa</a>
     </div>
   </footer>
 
-  <script src="/static/landing.js" defer></script>
+  <script src="/static/vendor/sweetalert2.all.min.js?v=20260411" defer></script>
+  <script src="/static/landing.js?v=20260411" defer></script>
 </body>
 </html>
