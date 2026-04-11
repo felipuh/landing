@@ -3,169 +3,136 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ISO Smart | Smart3AI</title>
-  <meta name="description" content="ISO Smart, la plataforma de Smart3AI para acelerar implementación, seguimiento y mejora de sistemas de gestión." />
+  <title>IsoSmart | Producto de Smart3AI</title>
+  <meta name="description" content="Detalle de producto IsoSmart: onboarding conversacional, gemelo digital ISO, rutas por expertise y roadmap automatico." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
-  <style>
-    :root {
-      --bg: #f4f8fc;
-      --ink: #0f2239;
-      --muted: #47617d;
-      --accent: #004990;
-      --accent-2: #00356a;
-      --card: #ffffff;
-      --line: #d5e1ee;
-    }
-
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      color: var(--ink);
-      font-family: Manrope, sans-serif;
-      background:
-        radial-gradient(circle at 8% 8%, #dce9f6 0%, transparent 28%),
-        radial-gradient(circle at 95% 0%, #ebf2f8 0%, transparent 22%),
-        var(--bg);
-    }
-
-    .container { width: min(1060px, 92vw); margin: 0 auto; }
-
-    .top {
-      padding: 1rem 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand { font-family: "Space Grotesk", sans-serif; font-weight: 700; }
-    .brand span { color: var(--accent); }
-
-    .btn {
-      text-decoration: none;
-      border-radius: 12px;
-      padding: .75rem 1rem;
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid var(--line);
-      color: var(--ink);
-      background: #fff;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 1rem;
-      align-items: center;
-      padding: 2rem 0 1.6rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-family: "Space Grotesk", sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.08;
-    }
-
-    .hero p { color: var(--muted); font-size: 1.02rem; }
-
-    .pill {
-      display: inline-block;
-      margin-bottom: .8rem;
-      padding: .35rem .8rem;
-      border-radius: 999px;
-      background: #ebf2f8;
-      color: #003f7d;
-      border: 1px solid #adc8e3;
-      font-size: .8rem;
-      font-weight: 700;
-    }
-
-    .cta-row { display: flex; gap: .7rem; flex-wrap: wrap; }
-    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; border: 0; }
-
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 1rem;
-      box-shadow: 0 10px 26px rgba(18, 39, 64, .07);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: .8rem;
-      margin: 1.2rem 0 2rem;
-    }
-
-    .grid h3 { margin: .2rem 0; }
-    .grid p { color: var(--muted); margin: 0; }
-
-    .footer {
-      border-top: 1px solid var(--line);
-      padding: 1rem 0 2rem;
-      text-align: center;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; }
-      .grid { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/landing.css" />
 </head>
 <body>
-  <div class="container top">
-    <div class="brand">Smart<span>3AI</span> / ISO Smart</div>
-    <a class="btn" href="index.html">Volver al inicio</a>
-  </div>
+  <div class="bg-atmosphere" aria-hidden="true"></div>
 
-  <main class="container">
-    <section class="hero">
-      <div>
-        <span class="pill">Producto comercial activo</span>
-        <h1>ISO Smart: gestión ISO accionable para equipos que ejecutan.</h1>
-        <p>
-          ISO Smart integra planificación, operaciones, desempeño y mejora continua en una experiencia unificada,
-          con apoyo de IA para acelerar decisiones y mantener trazabilidad.
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="/index.html">
+        <span class="brand-dot"></span>
+        Smart3AI / IsoSmart
+      </a>
+      <nav class="menu" aria-label="Navegacion de producto">
+        <a href="#capacidades">Capacidades</a>
+        <a href="#flujo">Flujo</a>
+        <a href="#activacion">Activacion</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="btn btn-ghost" href="/index.html">Volver a landing</a>
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20de%20producto%20IsoSmart">Solicitar demo</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Producto B2B especializado</p>
+        <h1>IsoSmart: producto de Smart3AI para ejecutar ISO con impacto financiero.</h1>
+        <p class="lead">
+          IsoSmart no solo organiza cumplimiento: transforma tu sistema de gestion en un motor de decisiones, ahorro y cuidado del cliente.
+          AdminApps centraliza la operación del ecosistema Smart3AI para escalar nuevos productos sin perder control.
         </p>
-        <div class="cta-row">
-          <a class="btn primary" href="mailto:felipe@smart3ai.com?subject=Demo%20ISO%20Smart">Solicitar demo</a>
-          <a class="btn" href="mailto:felipe@smart3ai.com?subject=Pricing%20ISO%20Smart">Consultar pricing</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activar%20Prueba%20IsoSmart">Activar prueba guiada</a>
+          <a class="btn btn-ghost" href="/index.html#demo">Ver onboarding conversacional</a>
+          <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Evaluar%20ROI%20con%20IsoSmart">Evaluar ROI con mi equipo</a>
         </div>
       </div>
-      <aside class="card">
-        <h3 style="margin-top:0;">Resultados que busca un cliente</h3>
-        <ul style="margin:.6rem 0 0; padding-left:1.1rem; color:var(--muted); line-height:1.6;">
-          <li>Menos tiempo en preparación de auditorías.</li>
-          <li>Más claridad de responsables y evidencias por cláusula.</li>
-          <li>Seguimiento real de riesgos, acciones y objetivos.</li>
-          <li>Adopción progresiva por módulos sin fricción.</li>
+
+      <aside class="demo-card reveal">
+        <header class="demo-head">
+          <div>
+            <p class="demo-title">Resumen de valor en 30 minutos</p>
+            <p class="demo-sub">Resultados que recibe el equipo al cerrar onboarding</p>
+          </div>
+        </header>
+        <ul class="twin-list">
+          <li><span>Alcance del SGC v1</span><strong>Generado</strong></li>
+          <li><span>Mapa de procesos inicial</span><strong>Generado</strong></li>
+          <li><span>Top 5 riesgos/oportunidades</span><strong>Generado</strong></li>
+          <li><span>Politica de calidad borrador</span><strong>Generado</strong></li>
+          <li><span>Roadmap 3-6-12 meses</span><strong>Generado</strong></li>
         </ul>
       </aside>
     </section>
 
-    <section class="grid" aria-label="Capacidades clave de ISO Smart">
-      <article class="card">
-        <h3>Contexto y liderazgo</h3>
-        <p>Mapea contexto, partes interesadas, alcance y compromisos directivos con estructura clara.</p>
+    <section class="container intent-band reveal" aria-label="Activación de producto">
+      <article>
+        <p class="tag">Explorar</p>
+        <h3>Revisar encaje por industria</h3>
+        <a class="btn btn-ghost" href="/index.html#industrias">Comparar casos</a>
       </article>
-      <article class="card">
-        <h3>Operación y control</h3>
-        <p>Gestiona documentos, procesos, controles y evidencias en un flujo ordenado.</p>
+      <article>
+        <p class="tag">Evaluar</p>
+        <h3>Demo con dirección y calidad</h3>
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20conjunta%20Direccion%20y%20Calidad">Agendar sesión conjunta</a>
       </article>
-      <article class="card">
-        <h3>Mejora continua</h3>
-        <p>Convierte hallazgos en acciones correctivas medibles y con trazabilidad total.</p>
+      <article>
+        <p class="tag">Activar</p>
+        <h3>Inicio inmediato del onboarding</h3>
+        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Activar%20onboarding%20inmediato">Solicitar activación</a>
       </article>
+    </section>
+
+    <section id="capacidades" class="container value-grid reveal">
+      <article>
+        <h3>ISO Coach adaptativo</h3>
+        <p>Adapta preguntas y profundidad segun nivel: nulo, aprendiz, intermedio, experto o ninja.</p>
+      </article>
+      <article>
+        <h3>Gemelo Digital ISO</h3>
+        <p>Panel vivo que construye evidencia, estructura y prioridades en tiempo real.</p>
+      </article>
+      <article>
+        <h3>Modo gerencial o tecnico</h3>
+        <p>Se conserva el tono elegido en todo el sistema para alinear lideres y equipos.</p>
+      </article>
+      <article>
+        <h3>Conectado a AdminApps</h3>
+        <p>Gobierna organizaciones, usuarios, finanzas y crecimiento del portafolio desde un control center único.</p>
+      </article>
+    </section>
+
+    <section id="flujo" class="container journey reveal">
+      <div class="section-head">
+        <p class="eyebrow">Arquitectura del producto</p>
+        <h2>Seis etapas, tres motores de IA, una sola experiencia</h2>
+      </div>
+      <ol class="journey-list">
+        <li><strong>Motor 1:</strong> Perfil organizacional para estructura base.</li>
+        <li><strong>Motor 2:</strong> Impacto y ahorro para quick wins y big bets.</li>
+        <li><strong>Motor 3:</strong> Proposito y alineacion para objetivos del lider y equipo.</li>
+        <li><strong>Pago separado:</strong> usuario operador y responsable financiero desacoplados.</li>
+        <li><strong>Ruta adaptativa:</strong> taller, fast-track o consultor multiempresa.</li>
+        <li><strong>Roadmap:</strong> plan ejecutable con plantillas y hitos.</li>
+      </ol>
+    </section>
+
+    <section id="activacion" class="container final-cta reveal">
+      <h2>Activa IsoSmart y entra con una sesion guiada desde el dia 1.</h2>
+      <p>Implementacion preparada para mercado latinoamericano: claridad comercial, soporte operativo y resultados trazables.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activacion%20de%20IsoSmart">Iniciar ahora</a>
+        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Pricing%20IsoSmart">Consultar pricing</a>
+      </div>
     </section>
   </main>
 
-  <div class="footer">© 2026 ISO Smart by Smart3AI.</div>
+  <footer class="site-footer">
+    <div class="container footer-row">
+      <p>© 2026 Smart3AI | IsoSmart integrado a AdminApps</p>
+      <a href="/index.html">Landing corporativa</a>
+    </div>
+  </footer>
+
+  <script src="/static/landing.js" defer></script>
 </body>
 </html>

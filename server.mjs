@@ -45,7 +45,8 @@ function resolvePath(urlPath) {
 createServer((req, res) => {
   withSecurityHeaders(res);
 
-  const requestPath = req.url === '/' ? '/index.html' : req.url.split('?')[0];
+  const rawPath = req.url.split('?')[0];
+  const requestPath = rawPath === '/' ? '/index.html' : rawPath;
   const filePath = resolvePath(requestPath);
 
   if (!filePath || !existsSync(filePath) || statSync(filePath).isDirectory()) {
