@@ -40,7 +40,7 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="top" role="main">
     <section class="hero container">
       <div class="hero-copy reveal">
         <p id="heroEyebrow" class="eyebrow">Smart3AI | plataforma matriz de aplicaciones B2B</p>
@@ -106,18 +106,18 @@
         <div class="demo-panels">
           <div class="panel left">
             <h3 id="coachPanelTitle">ISO Coach</h3>
-            <div id="chatLines" class="chat-lines"></div>
+            <div id="chatLines" class="chat-lines" aria-live="polite"></div>
           </div>
           <div class="panel right">
             <h3 id="digitalTwinTitle">Gemelo Digital ISO</h3>
-            <ul id="digitalTwin" class="twin-list"></ul>
+            <ul id="digitalTwin" class="twin-list" aria-live="polite"></ul>
             <div class="progress-box">
               <div class="progress-label">
                 <span id="progressLabel">Sistema base construido</span>
                 <strong id="progressValue">20%</strong>
               </div>
               <div class="progress-track">
-                <span id="progressBar"></span>
+                <span id="progressBar" aria-hidden="true"></span>
               </div>
             </div>
           </div>
@@ -243,7 +243,7 @@
           % de mejora esperada con IsoSmart
           <input id="improvementInput" type="number" min="0" max="100" step="1" value="20" />
         </label>
-        <div class="roi-result">
+        <div class="roi-result" aria-live="polite">
           <p>Ahorro potencial mensual</p>
           <strong id="roiValue">USD 1,920</strong>
         </div>

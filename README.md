@@ -2,6 +2,12 @@
 
 Landing comercial de Smart3AI con una pagina principal y una pagina dedicada a ISO Smart.
 
+## Linea Base UI/UX + Prompt
+
+Documento de estandar visual/funcional y prompt maestro para nuevos proyectos:
+
+- [docs/internal/FRONTEND_LINEA_BASE_Y_PROMPT.md](docs/internal/FRONTEND_LINEA_BASE_Y_PROMPT.md)
+
 ## Ejecutar local
 
 ```bash
