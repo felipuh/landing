@@ -1453,6 +1453,217 @@ function bindRoiCalculator() {
   recalcRoi();
 }
 
+function animateTyping(node, finalText, speed = 24) {
+  if (!node || !finalText) {
+    return;
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (prefersReduced) {
+    node.textContent = finalText;
+    return;
+  }
+
+  let index = 0;
+  node.textContent = '';
+
+  const timer = window.setInterval(() => {
+    index += 1;
+    node.textContent = finalText.slice(0, index);
+    if (index >= finalText.length) {
+      window.clearInterval(timer);
+    }
+  }, speed);
+}
+
+function initHeroTextReveal() {
+  const headlines = Array.from(document.querySelectorAll('.hero-copy h1'));
+  if (!headlines.length) {
+    return;
+  }
+
+  headlines.forEach((node) => {
+    const original = node.textContent.trim();
+    if (!original) {
+      return;
+    }
+
+    // Entry typing effect for hero titles to avoid static first paint.
+    animateTyping(node, original);
+  });
+}
+
+function activateFeatureReveals() {
+  const cards = Array.from(document.querySelectorAll('.value-grid article, .intent-band article, .decision-grid article, .proof-grid article'));
+  if (!cards.length) {
+    return;
+  }
+
+  cards.forEach((card, index) => {
+    card.classList.add('feature-reveal');
+    card.style.transitionDelay = `${(index % 4) * 70}ms`;
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.18 });
+
+  cards.forEach((card) => observer.observe(card));
+}
+
+function bindPointerEffects() {
+  const heroVisual = document.querySelector('.hero-core-visual');
+  const ctaButtons = Array.from(document.querySelectorAll('.btn-primary'));
+  let rafId = null;
+  let pointerX = window.innerWidth * 0.5;
+  let pointerY = window.innerHeight * 0.35;
+
+  function flushPointerEffects() {
+    rafId = null;
+
+    if (heroVisual) {
+      const dx = (pointerX / window.innerWidth - 0.5) * 14;
+      const dy = (pointerY / window.innerHeight - 0.5) * 10;
+      heroVisual.style.transform = `translate3d(${dx}px, ${dy}px, 0)`;
+    }
+  }
+
+  window.addEventListener('pointermove', (event) => {
+    pointerX = event.clientX;
+    pointerY = event.clientY;
+    if (!rafId) {
+      rafId = window.requestAnimationFrame(flushPointerEffects);
+    }
+  }, { passive: true });
+
+  ctaButtons.forEach((button) => {
+    button.addEventListener('pointermove', (event) => {
+      const rect = button.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
+      button.style.setProperty('--mouse-x', `${x}px`);
+      button.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+}
+
+function initLiveBackground() {
+  const canvas = document.getElementById('bgParticles');
+  if (!canvas) {
+    return;
+  }
+
+  const context = canvas.getContext('2d');
+  if (!context) {
+    return;
+  }
+
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let width = 0;
+  let height = 0;
+  let particles = [];
+  let pointer = { x: 0, y: 0, active: false };
+  let animationFrameId = null;
+
+  function resizeCanvas() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.floor(width * dpr);
+    canvas.height = Math.floor(height * dpr);
+    canvas.style.width = `${width}px`;
+    canvas.style.height = `${height}px`;
+    context.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+    const count = Math.max(24, Math.min(66, Math.floor((width * height) / 28000)));
+    particles = Array.from({ length: count }, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      vx: (Math.random() - 0.5) * 0.26,
+      vy: (Math.random() - 0.5) * 0.26,
+      r: 1 + Math.random() * 1.8,
+    }));
+  }
+
+  function step() {
+    context.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i += 1) {
+      const p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0 || p.x > width) p.vx *= -1;
+      if (p.y < 0 || p.y > height) p.vy *= -1;
+
+      if (pointer.active) {
+        const dx = p.x - pointer.x;
+        const dy = p.y - pointer.y;
+        const distSq = dx * dx + dy * dy;
+        if (distSq < 19000 && distSq > 0.001) {
+          const force = 0.22 / (distSq / 9000);
+          p.vx += (dx / Math.sqrt(distSq)) * force;
+          p.vy += (dy / Math.sqrt(distSq)) * force;
+        }
+      }
+
+      p.vx *= 0.992;
+      p.vy *= 0.992;
+
+      context.beginPath();
+      context.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      context.fillStyle = 'rgba(42, 149, 224, 0.35)';
+      context.fill();
+    }
+
+    // Draw soft links to create a subtle data-network feeling.
+    for (let i = 0; i < particles.length; i += 1) {
+      for (let j = i + 1; j < particles.length; j += 1) {
+        const a = particles[i];
+        const b = particles[j];
+        const dx = a.x - b.x;
+        const dy = a.y - b.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 130) {
+          const alpha = 0.16 * (1 - dist / 130);
+          context.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+          context.lineWidth = 1;
+          context.beginPath();
+          context.moveTo(a.x, a.y);
+          context.lineTo(b.x, b.y);
+          context.stroke();
+        }
+      }
+    }
+
+    animationFrameId = window.requestAnimationFrame(step);
+  }
+
+  resizeCanvas();
+
+  if (!prefersReduced) {
+    animationFrameId = window.requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  window.addEventListener('pointermove', (event) => {
+    pointer = { x: event.clientX, y: event.clientY, active: true };
+  }, { passive: true });
+  window.addEventListener('pointerleave', () => {
+    pointer.active = false;
+  });
+
+  window.addEventListener('beforeunload', () => {
+    if (animationFrameId) {
+      window.cancelAnimationFrame(animationFrameId);
+    }
+  });
+}
+
 window.addEventListener('DOMContentLoaded', () => {
   bindLanguageControl();
   bindThemeControl();
@@ -1464,6 +1675,10 @@ window.addEventListener('DOMContentLoaded', () => {
   bindCtaTracking();
   bindAnalyticsActions();
   activateReveals();
+  activateFeatureReveals();
+  initHeroTextReveal();
+  bindPointerEffects();
+  initLiveBackground();
 });
 
 window.addEventListener('pagehide', () => {
