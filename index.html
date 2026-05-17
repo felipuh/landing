@@ -3,352 +3,146 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Smart3AI | Ecosistema SaaS B2B con IA aplicada</title>
-  <meta name="description" content="Smart3AI es la empresa matriz de un ecosistema SaaS B2B. IsoSmart lidera ISO con IA conversacional y AdminApps centraliza el control de todas las aplicaciones." />
+  <title>Smart3AI | Portfolio SaaS Multitenant con SSO</title>
+  <meta name="description" content="Smart3AI unifica su portfolio SaaS con SSO, 2FA y arquitectura multitenant para operar múltiples productos empresariales con una sola identidad." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/static/vendor/sweetalert2.min.css?v=20260411" />
-  <link rel="stylesheet" href="/static/landing.css?v=20260411" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/landing.css?v=20260517" />
 </head>
 <body>
-  <div class="bg-atmosphere" aria-hidden="true"></div>
-  <canvas class="bg-particles" id="bgParticles" aria-hidden="true"></canvas>
-  <header class="site-header">
+  <div class="bg-orbit" aria-hidden="true"></div>
+  <header class="topbar">
     <div class="container nav">
-      <a class="brand" href="#top" aria-label="Ir al inicio">
-        <span class="brand-dot"></span>
+      <a class="brand" href="#inicio" aria-label="Inicio Smart3AI">
+        <span class="brand-mark"></span>
         Smart3AI
       </a>
-      <nav class="menu" aria-label="Navegacion principal">
-        <a href="#ecosistema" data-i18n="nav_ecosystem">Ecosistema</a>
-        <a href="#como-funciona" data-i18n="nav_onboarding">Onboarding IA</a>
-        <a href="#industrias" data-i18n="nav_industries">Industrias</a>
-        <a href="#decisores" data-i18n="nav_profiles">Perfiles</a>
-        <a href="#resultado-financiero" data-i18n="nav_finance">Resultado financiero</a>
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#portfolio">Portfolio</a>
+        <a href="#arquitectura">Arquitectura</a>
+        <a href="#acceso">Acceso</a>
       </nav>
-      <div class="nav-actions">
-        <a class="btn btn-ghost" href="http://127.0.0.1:3000/login" data-i18n="adminapps_access">Acceso AdminApps</a>
-        <a class="btn btn-ghost" href="/isosmart.html" data-i18n="view_product">Ver producto</a>
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20IsoSmart" data-i18n="book_demo">Agendar demo</a>
-        <select id="languageSelect" class="control-select" aria-label="Idioma">
-          <option value="es">ES</option>
-          <option value="en">EN</option>
-          <option value="pt">PT</option>
-        </select>
-        <button id="themeToggle" class="btn btn-ghost" type="button" data-i18n="theme_toggle">Modo oscuro</button>
+      <div class="actions">
+        <a class="btn ghost" href="http://sso.smart3ai.local/api/integration/sso/login/">SSO Endpoint</a>
+        <a class="btn primary" href="mailto:felipe@smart3ai.com?subject=Smart3AI%20Portfolio%20Demo">Solicitar Demo</a>
       </div>
     </div>
   </header>
 
-  <main id="top" role="main">
+  <main id="inicio">
     <section class="hero container">
-      <div class="hero-copy reveal">
-        <p id="heroEyebrow" class="eyebrow">Smart3AI | plataforma matriz de aplicaciones B2B</p>
-        <p id="abChip" class="ab-chip" aria-live="polite"></p>
-        <div class="persona-switch" role="tablist" aria-label="Perfil del visitante">
-          <button id="personaTabCeo" class="persona-tab active" data-persona="ceo" role="tab" aria-selected="true">Dueño / Gerencia</button>
-          <button id="personaTabQuality" class="persona-tab" data-persona="quality" role="tab" aria-selected="false">Líder de Calidad</button>
-          <button id="personaTabOps" class="persona-tab" data-persona="ops" role="tab" aria-selected="false">Operaciones</button>
-        </div>
-        <h1 id="heroTitle">Convierte calidad y operación en decisiones de negocio con IA.</h1>
-        <p id="heroLead" class="lead">
-          Smart3AI desarrolla un ecosistema de aplicaciones para crecimiento operativo en Latinoamérica.
-          IsoSmart es el producto insignia para ISO 9001 con onboarding conversacional IA y ejecución guiada.
-        </p>
-        <div class="hero-actions">
-          <a id="heroPrimaryCta" class="btn btn-primary" href="#demo" data-cta-intent="evaluar" data-cta-location="hero">Probar demo conversacional</a>
-          <a id="heroSecondaryCta" class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Diagnostico%20IsoSmart" data-cta-intent="activar" data-cta-location="hero">Iniciar diagnostico</a>
-          <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Explorar%20ecosistema%20Smart3AI" data-cta-intent="explorar" data-cta-location="hero">Explorar ecosistema</a>
-        </div>
-        <ul class="hero-metrics" aria-label="Indicadores de impacto">
-          <li>
-            <strong>30 min</strong>
-            <span id="metricOnboarding">de onboarding consultivo</span>
-          </li>
-          <li>
-            <strong>3 motores IA</strong>
-            <span id="metricAi">priorizados por IA</span>
-          </li>
-          <li>
-            <strong>Smart3AI</strong>
-            <span id="metricEcosystem">ecosistema B2B escalable</span>
-          </li>
-        </ul>
+      <p class="eyebrow">Enterprise Portfolio Platform</p>
+      <h1>Una sola identidad, seis productos, múltiples tenants empresariales.</h1>
+      <p class="lead">
+        Smart3AI consolida su cartera con autenticación centralizada (SSO + 2FA + JWT), enrutamiento por subdominios y aislamiento por organización para escalar operación y seguridad.
+      </p>
+      <div class="hero-cta">
+        <a class="btn primary" href="#portfolio">Explorar Portfolio</a>
+        <a class="btn ghost" href="#acceso">Ver Dominios Locales</a>
       </div>
-
-      <div class="hero-core-visual reveal" aria-hidden="true">
-        <div class="core-ring"></div>
-        <div class="core-ring core-ring-b"></div>
-        <div class="core-ring core-ring-c"></div>
-        <span class="core-orb orb-a"></span>
-        <span class="core-orb orb-b"></span>
-        <span class="core-orb orb-c"></span>
-        <span class="core-orb orb-d"></span>
-      </div>
-
-      <aside id="demo" class="demo-card reveal" aria-label="Demo conversacional de onboarding">
-        <header class="demo-head">
-          <div>
-            <p id="demoTitle" class="demo-title">Demo ISO Coach</p>
-            <p id="demoSub" class="demo-sub">Selecciona el lenguaje y sector para simular el onboarding</p>
-          </div>
-          <span id="demoLivePill" class="live-pill">En vivo</span>
-        </header>
-
-        <div class="demo-controls">
-          <label>
-            <span id="toneLabel">Lenguaje</span>
-            <select id="toneSelect">
-              <option id="toneOptionManagerial" value="gerencial">Gerencial</option>
-              <option id="toneOptionTechnical" value="tecnico">Tecnico</option>
-            </select>
-          </label>
-          <label>
-            <span id="industryLabel">Industria</span>
-            <select id="industrySelect">
-              <option id="industryOptionManufacturing" value="manufactura">Manufactura</option>
-              <option id="industryOptionServices" value="servicios">Servicios</option>
-              <option id="industryOptionDistribution" value="distribucion">Importacion / Distribucion</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="demo-panels">
-          <div class="panel left">
-            <h3 id="coachPanelTitle">ISO Coach</h3>
-            <div id="chatLines" class="chat-lines" aria-live="polite"></div>
-          </div>
-          <div class="panel right">
-            <h3 id="digitalTwinTitle">Gemelo Digital ISO</h3>
-            <ul id="digitalTwin" class="twin-list" aria-live="polite"></ul>
-            <div class="progress-box">
-              <div class="progress-label">
-                <span id="progressLabel">Sistema base construido</span>
-                <strong id="progressValue">20%</strong>
-              </div>
-              <div class="progress-track">
-                <span id="progressBar" aria-hidden="true"></span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
+      <ul class="metrics" aria-label="Métricas de arquitectura">
+        <li><strong>1</strong><span>Identity Core</span></li>
+        <li><strong>6</strong><span>Productos Integrados</span></li>
+        <li><strong>N</strong><span>Tenants por Producto</span></li>
+      </ul>
     </section>
 
-    <section class="container intent-band reveal" aria-label="Rutas de decision">
-      <article>
-        <p class="tag">Explorar</p>
-        <h3>Quiero entender si esto aplica a mi empresa</h3>
-        <a class="btn btn-ghost" href="#demo" data-cta-intent="explorar" data-cta-location="intent-band">Ver demo de 90 segundos</a>
-      </article>
-      <article>
-        <p class="tag">Evaluar</p>
-        <h3>Necesito validar impacto con mi equipo</h3>
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20ejecutiva%20Smart3AI" data-cta-intent="evaluar" data-cta-location="intent-band">Agendar demo ejecutiva</a>
-      </article>
-      <article>
-        <p class="tag">Activar</p>
-        <h3>Quiero iniciar onboarding esta semana</h3>
-        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Activar%20onboarding%20IsoSmart" data-cta-intent="activar" data-cta-location="intent-band">Iniciar onboarding ahora</a>
-      </article>
-    </section>
-
-    <section id="ecosistema" class="container value-grid reveal">
-      <article>
-        <h3>Smart3AI (empresa matriz)</h3>
-        <p>Diseña y opera aplicaciones SaaS B2B para transformar gestión en resultados medibles.</p>
-      </article>
-      <article>
-        <h3>IsoSmart (producto)</h3>
-        <p>Software especializado en ISO con IA conversacional, gemelo digital y roadmap accionable.</p>
-      </article>
-      <article>
-        <h3>AdminApps (control center)</h3>
-        <p>Plataforma interna para colaboradores Smart3AI (acceso restringido por rol).</p>
-      </article>
-    </section>
-
-    <section class="container value-grid reveal">
-      <article>
-        <h3>Consultoria, no formularios</h3>
-        <p>La configuracion inicial conversa con tu realidad operativa y traduce respuestas a estructura ISO utilizable.</p>
-      </article>
-      <article>
-        <h3>Dos idiomas de trabajo</h3>
-        <p>Habla en lenguaje gerente o tecnico. La plataforma conserva tono y foco durante todo el sistema.</p>
-      </article>
-      <article>
-        <h3>Activacion por madurez</h3>
-        <p>Ruta Taller para equipos nuevos, Fast-Track para intermedios y modo Consultor para expertos multiempresa.</p>
-      </article>
-    </section>
-
-    <section id="como-funciona" class="container journey reveal">
+    <section id="portfolio" class="container grid-section">
       <div class="section-head">
-        <p class="eyebrow">Onboarding conversacional</p>
-        <h2>Del diagnostico al roadmap en 6 etapas y 3 motores IA</h2>
+        <p class="eyebrow">Smart3AI Product Suite</p>
+        <h2>Productos conectados al mismo núcleo SSO</h2>
       </div>
-      <ol class="journey-list">
-        <li><strong>1.</strong> Bienvenida inteligente por rol, expertise y tamano.</li>
-        <li><strong>2.</strong> Radiografia operativa adaptada a nivel ISO.</li>
-        <li><strong>3.</strong> Proposito del lider + objetivos de calidad.</li>
-        <li><strong>4.</strong> Esqueleto ISO automatico y dashboard listo al 20%.</li>
-        <li><strong>5.</strong> Ruta de ejecucion por madurez del equipo.</li>
-        <li><strong>6.</strong> Roadmap de 3, 6 o 12 meses con hitos accionables.</li>
+      <div class="product-grid">
+        <article class="product-card">
+          <h3>AdminApps</h3>
+          <p>Centro de identidad, seguridad, membresías y control organizacional.</p>
+          <a href="http://adminapps.smart3ai.local">adminapps.smart3ai.local</a>
+        </article>
+        <article class="product-card">
+          <h3>IsoSmart</h3>
+          <p>Sistema ISO con contexto organizacional sincronizado desde SSO central.</p>
+          <a href="http://isosmart.smart3ai.local">isosmart.smart3ai.local</a>
+        </article>
+        <article class="product-card">
+          <h3>VulnGuard IA</h3>
+          <p>Gestión de vulnerabilidades con tenant provisioning automático por claim.</p>
+          <a href="http://vulnguard.smart3ai.local">vulnguard.smart3ai.local</a>
+        </article>
+        <article class="product-card">
+          <h3>Control Horas Desarrollo</h3>
+          <p>Gestión de horas/proyectos integrada con login SSO y flujo 2FA central.</p>
+          <a href="http://horas.smart3ai.local">horas.smart3ai.local</a>
+        </article>
+        <article class="product-card">
+          <h3>Sistema Condominios</h3>
+          <p>Operación residencial con acceso federado y claims de tenant propagados.</p>
+          <a href="http://condominios.smart3ai.local">condominios.smart3ai.local</a>
+        </article>
+        <article class="product-card">
+          <h3>BOT_Cryptp</h3>
+          <p>API de trading protegida por JWT SSO para operaciones por organización.</p>
+          <a href="http://cryptp.smart3ai.local">cryptp.smart3ai.local</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="arquitectura" class="container architecture">
+      <div class="section-head">
+        <p class="eyebrow">Arquitectura Premium</p>
+        <h2>Flujo SSO multitenant Smart3AI</h2>
+      </div>
+      <ol class="flow">
+        <li><strong>1.</strong> El usuario accede con cuenta central (felipe@smart3ai.com).</li>
+        <li><strong>2.</strong> AdminApps valida password + 2FA y emite JWT firmado.</li>
+        <li><strong>3.</strong> El token incluye claims de organización, rol y audiencia.</li>
+        <li><strong>4.</strong> Cada backend sincroniza contexto local y aplica tenant scope.</li>
+        <li><strong>5.</strong> Nginx enruta por subdominio para una experiencia unificada.</li>
       </ol>
+      <div class="claim-panel">
+        <h3>Claims críticos en el token</h3>
+        <pre>{
+  "iss": "https://sso.smart3ai.local",
+  "aud": ["smart3ai-portfolio"],
+  "organization_id": "<tenant-uuid>",
+  "role": "org_admin",
+  "email": "felipe@smart3ai.com"
+}</pre>
+      </div>
     </section>
 
-    <section id="industrias" class="container industries reveal">
+    <section id="acceso" class="container access">
       <div class="section-head">
-        <p class="eyebrow">Una plataforma, tres realidades</p>
-        <h2>Mensajes por industria en una sola experiencia</h2>
+        <p class="eyebrow">Acceso Local desde PC Física</p>
+        <h2>Nginx + Subdominios Smart3AI</h2>
       </div>
-      <div class="industry-tabs" role="tablist" aria-label="Industrias">
-        <button id="tabManufacturing" class="tab active" data-tab="manufactura" role="tab" aria-selected="true">Manufactura</button>
-        <button id="tabServices" class="tab" data-tab="servicios" role="tab" aria-selected="false">Servicios</button>
-        <button id="tabDistribution" class="tab" data-tab="distribucion" role="tab" aria-selected="false">Importacion / Distribucion</button>
-      </div>
-      <div id="industryPanel" class="industry-panel" role="tabpanel"></div>
-    </section>
-
-    <section id="decisores" class="container decision reveal">
-      <div class="section-head">
-        <p class="eyebrow">Mensaje por rol</p>
-        <h2>Una sola página para tres tipos de decisión</h2>
-      </div>
-      <div class="decision-grid">
+      <div class="access-grid">
         <article>
-          <h3>Dueño o Gerencia General</h3>
-          <p>Prioriza rentabilidad, continuidad y control. IsoSmart traduce calidad a decisiones de margen y crecimiento.</p>
-          <a class="text-cta" href="mailto:felipe@smart3ai.com?subject=Demo%20para%20Gerencia%20General">Solicitar enfoque ejecutivo</a>
+          <h3>Hosts</h3>
+          <p>Usa el script de setup para registrar dominios locales del portfolio.</p>
+          <code>landing/scripts/setup_smart3ai_hosts.sh</code>
         </article>
         <article>
-          <h3>Líder de Calidad / SGC</h3>
-          <p>Necesita trazabilidad, auditoría y ejecución. El onboarding conversa, estructura y deja backlog accionable desde el día 1.</p>
-          <a class="text-cta" href="mailto:felipe@smart3ai.com?subject=Demo%20para%20Lider%20de%20Calidad">Solicitar enfoque técnico</a>
+          <h3>Reverse Proxy</h3>
+          <p>Config Nginx unificada para todos los productos y rutas API.</p>
+          <code>landing/nginx_smart3ai_portfolio.conf</code>
         </article>
         <article>
-          <h3>Operaciones / Transformación</h3>
-          <p>Busca reducir fricción operativa. Smart3AI integra producto y control center para escalar mejoras en múltiples unidades.</p>
-          <a class="text-cta" href="mailto:felipe@smart3ai.com?subject=Demo%20para%20Operaciones">Solicitar enfoque operativo</a>
+          <h3>QA Smoke</h3>
+          <p>Prueba rápida de login SSO y reto 2FA.</p>
+          <code>landing/scripts/qa_sso_smoke.sh</code>
         </article>
       </div>
-    </section>
-
-    <section id="resultado-financiero" class="container proof reveal">
-      <div class="section-head">
-        <p class="eyebrow">Calculadora de impacto</p>
-        <h2>Estimación rápida de costo de no calidad</h2>
-      </div>
-      <div class="roi-box">
-        <label>
-          Facturación mensual estimada (USD)
-          <input id="billingInput" type="number" min="0" step="100" value="120000" />
-        </label>
-        <label>
-          % estimado de costo de no calidad
-          <input id="cnqInput" type="number" min="0" max="30" step="0.5" value="8" />
-        </label>
-        <label>
-          % de mejora esperada con IsoSmart
-          <input id="improvementInput" type="number" min="0" max="100" step="1" value="20" />
-        </label>
-        <div class="roi-result" aria-live="polite">
-          <p>Ahorro potencial mensual</p>
-          <strong id="roiValue">USD 1,920</strong>
-        </div>
-      </div>
-    </section>
-
-    <section class="container proof reveal">
-      <div class="section-head">
-        <p class="eyebrow">Prueba social y negocio</p>
-        <h2>Lo que cambia cuando ISO se conecta a rentabilidad</h2>
-      </div>
-      <div class="proof-grid">
-        <article>
-          <p class="quote">"Pasamos de perseguir auditorias a gestionar decisiones con impacto comercial real."</p>
-          <span>Gerencia de Operaciones, sector manufactura</span>
-        </article>
-        <article>
-          <p class="quote">"El equipo tecnico y la direccion por fin hablan el mismo idioma dentro del sistema."</p>
-          <span>Responsable SGC, sector servicios</span>
-        </article>
-      </div>
-    </section>
-
-    <section class="container final-cta reveal">
-      <h2>Si hoy no mides costo de no calidad, ya estas perdiendo margen.</h2>
-      <p>Activa una sesion con ISO Coach y obtén diagnostico + estructura + roadmap desde la primera conversacion.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Activar%20Onboarding%20IsoSmart">Iniciar onboarding</a>
-        <a class="btn btn-ghost" href="mailto:felipe@smart3ai.com?subject=Demo%20ejecutiva%20IsoSmart">Agendar demo ejecutiva</a>
-      </div>
-    </section>
-
-    <section id="ab-lab" class="container ab-lab reveal" aria-label="Panel de analítica A/B">
-      <div class="section-head">
-        <p class="eyebrow">Analítica comercial local</p>
-        <h2>Resultados rápidos de experimento A/B</h2>
-      </div>
-      <div class="ab-grid">
-        <article class="ab-card">
-          <p class="ab-label">Eventos totales</p>
-          <strong id="abTotalEvents">0</strong>
-        </article>
-        <article class="ab-card">
-          <p class="ab-label">Clicks CTA - Explorar</p>
-          <strong id="abExploreClicks">0</strong>
-        </article>
-        <article class="ab-card">
-          <p class="ab-label">Clicks CTA - Evaluar</p>
-          <strong id="abEvaluateClicks">0</strong>
-        </article>
-        <article class="ab-card">
-          <p class="ab-label">Clicks CTA - Activar</p>
-          <strong id="abActivateClicks">0</strong>
-        </article>
-      </div>
-
-      <div class="ab-variant-grid">
-        <article>
-          <h3>Variante A (Financiero)</h3>
-          <p id="abVariantA">Sin datos</p>
-        </article>
-        <article>
-          <h3>Variante B (Técnico)</h3>
-          <p id="abVariantB">Sin datos</p>
-        </article>
-      </div>
-
-      <div class="ab-actions">
-        <label class="campaign-field" for="campaignInput">
-          Campaña
-          <input id="campaignInput" type="text" placeholder="abril-2026-ceo" value="direct" />
-        </label>
-        <button id="syncAnalyticsBtn" class="btn btn-primary" type="button">Enviar a AdminApps</button>
-        <button id="exportJsonBtn" class="btn btn-ghost" type="button">Exportar JSON</button>
-        <button id="exportCsvBtn" class="btn btn-ghost" type="button">Exportar CSV</button>
-        <button id="clearAnalyticsBtn" class="btn btn-ghost" type="button">Reiniciar métricas</button>
-      </div>
-      <p id="syncStatus" class="sync-status" aria-live="polite">Sincronización pendiente</p>
     </section>
   </main>
 
-  <div class="mobile-sticky-cta" aria-label="Acciones rápidas">
-    <a class="btn btn-ghost" href="#demo" data-cta-intent="explorar" data-cta-location="mobile-sticky">Ver demo</a>
-    <a class="btn btn-primary" href="mailto:felipe@smart3ai.com?subject=Demo%20ejecutiva%20Smart3AI" data-cta-intent="evaluar" data-cta-location="mobile-sticky">Agendar demo</a>
-  </div>
-
-  <footer class="site-footer">
-    <div class="container footer-row">
-      <p>© 2026 Smart3AI | IsoSmart + AdminApps</p>
-      <a href="mailto:felipe@smart3ai.com">Contacto comercial</a>
+  <footer class="footer">
+    <div class="container footer-wrap">
+      <p>Smart3AI Portfolio Platform</p>
+      <a href="mailto:felipe@smart3ai.com">felipe@smart3ai.com</a>
     </div>
   </footer>
 
-  <script src="/static/vendor/sweetalert2.all.min.js?v=20260411" defer></script>
-  <script src="/static/landing.js?v=20260411" defer></script>
+  <script src="/static/landing.js?v=20260517" defer></script>
 </body>
 </html>
