@@ -24,12 +24,14 @@ const MIME_TYPES = {
   '.woff2': 'font/woff2',
 };
 
-function withSecurityHeaders(res) {
+function withSecurityHeaders(req, res) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   res.setHeader('X-Frame-Options', 'DENY');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
-  res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  if (env.LANDING_ENABLE_COOP === '1' || req.headers['x-forwarded-proto'] === 'https') {
+    res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+  }
   res.setHeader(
     'Content-Security-Policy',
     "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
@@ -66,7 +68,7 @@ function readJsonBody(req) {
 }
 
 createServer(async (req, res) => {
-  withSecurityHeaders(res);
+  withSecurityHeaders(req, res);
 
   if (req.method === 'POST' && req.url === '/api/landing-analytics/events/') {
     try {
