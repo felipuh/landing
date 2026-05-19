@@ -1,0 +1,24 @@
+INFO 2026-05-18 11:05:41,816 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-18 11:05:41,830 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-18 11:05:41,832 request_id=- Added job "Billing Daily Batch" to job store "default"
+INFO 2026-05-18 11:05:41,833 request_id=- Added job "Billing Recurring Reports" to job store "default"
+INFO 2026-05-18 11:05:41,833 request_id=- Scheduler started
+INFO 2026-05-18 11:05:41,846 request_id=- [billing_scheduler] Scheduler started — cron 06:00 CR time.
+INFO 2026-05-18 11:05:53,592 request_id=- Watching for file changes with StatReloader
+Error: That port is already in use.
+INFO 2026-05-18 11:12:10,296 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-18 11:12:10,303 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-18 11:12:10,304 request_id=- Added job "Billing Daily Batch" to job store "default"
+INFO 2026-05-18 11:12:10,305 request_id=- Added job "Billing Recurring Reports" to job store "default"
+INFO 2026-05-18 11:12:10,305 request_id=- Scheduler started
+INFO 2026-05-18 11:12:10,316 request_id=- [billing_scheduler] Scheduler started — cron 06:00 CR time.
+INFO 2026-05-18 11:12:17,953 request_id=- Watching for file changes with StatReloader
+Error: That port is already in use.
+INFO 2026-05-19 13:35:07,280 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-19 13:35:07,469 request_id=- Adding job tentatively -- it will be properly scheduled when the scheduler starts
+INFO 2026-05-19 13:35:07,567 request_id=- Added job "Billing Daily Batch" to job store "default"
+INFO 2026-05-19 13:35:07,568 request_id=- Added job "Billing Recurring Reports" to job store "default"
+INFO 2026-05-19 13:35:07,593 request_id=- Scheduler started
+INFO 2026-05-19 13:35:07,615 request_id=- [billing_scheduler] Scheduler started — cron 06:00 CR time.
+INFO 2026-05-19 13:35:24,254 request_id=- Watching for file changes with StatReloader
+Error: That port is already in use.

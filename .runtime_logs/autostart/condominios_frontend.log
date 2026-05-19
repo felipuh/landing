@@ -1,0 +1,21 @@
+
+> condos-frontend@1.0.0 dev
+> vite --host 0.0.0.0 --port 5176
+
+
+  VITE v5.4.21  ready in 5009 ms
+
+  ➜  Local:   http://localhost:5176/
+  ➜  Network: http://192.168.100.100:5176/
+11:43:39 a. m. [vite] hmr update /src/pages/DashboardPage.jsx, /src/index.css
+11:43:40 a. m. [vite] vite.config.js changed, restarting server...
+11:43:40 a. m. [vite] server restarted.
+
+> condos-frontend@1.0.0 dev
+> vite --host 0.0.0.0 --port 5176
+
+
+  VITE v5.4.21  ready in 20657 ms
+
+  ➜  Local:   http://localhost:5176/
+  ➜  Network: http://192.168.100.100:5176/
