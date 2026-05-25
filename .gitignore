@@ -4,3 +4,14 @@ node_modules/
 .env
 .env.*
 !.env.example
+.runtime_logs/autostart/adminapps_backend.log
+.runtime_logs/autostart/adminapps_frontend.log
+.runtime_logs/autostart/bot_cryptp_api.log
+.runtime_logs/autostart/condominios_backend.log
+.runtime_logs/autostart/condominios_frontend.log
+.runtime_logs/autostart/control_horas_backend.log
+.runtime_logs/autostart/control_horas_frontend.log
+.runtime_logs/autostart/landing.log
+.runtime_logs/autostart/condominios_backend.log
+.runtime_logs/autostart/isosmart_backend.log
+.runtime_logs/autostart/landing.log
