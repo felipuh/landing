@@ -5,10 +5,31 @@ BASE_DIR="/home/aplicacion/projects"
 LOG_DIR="$BASE_DIR/landing/.runtime_logs/autostart"
 mkdir -p "$LOG_DIR"
 
-CONDOMINIOS_MODE="${CONDOMINIOS_MODE:-compat}"
+export PATH="$HOME/.local/bin:$PATH"
+
+CONDOMINIOS_MODE="${CONDOMINIOS_MODE:-standard}"
 
 log() {
   echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+}
+
+resolve_compose_cmd() {
+  if command -v docker >/dev/null 2>&1; then
+    echo "docker compose"
+    return
+  fi
+
+  if command -v podman-compose >/dev/null 2>&1; then
+    echo "podman-compose"
+    return
+  fi
+
+  if command -v podman >/dev/null 2>&1 && podman compose version >/dev/null 2>&1; then
+    echo "podman compose"
+    return
+  fi
+
+  echo ""
 }
 
 start_process() {
@@ -33,16 +54,18 @@ start_process() {
 start_vulnguard() {
   local cwd="$BASE_DIR/VulnGuard_IA"
   local logfile="$LOG_DIR/vulnguard_compose.log"
+  local compose_cmd
 
-  if ! command -v docker >/dev/null 2>&1; then
-    log "WARN docker no disponible. Se omite VulnGuard_IA."
+  compose_cmd="$(resolve_compose_cmd)"
+  if [[ -z "$compose_cmd" ]]; then
+    log "WARN docker/podman compose no disponible. Se omite VulnGuard_IA."
     return
   fi
 
-  log "START VulnGuard_IA (docker compose up -d)"
+  log "START VulnGuard_IA ($compose_cmd up -d)"
   (
     cd "$cwd"
-    docker compose up -d >> "$logfile" 2>&1 || true
+    nohup bash -lc "$compose_cmd up -d" >> "$logfile" 2>&1 &
   )
 }
 
@@ -91,7 +114,7 @@ start_process \
   "adminapps_frontend" \
   "$BASE_DIR/adminapps/frontend" \
   "adminapps/frontend/node_modules/.bin/vite.*--port 3000|vite --host 0.0.0.0 --port 3000" \
-  "npm run dev -- --host 0.0.0.0 --port 3000"
+  "npm run dev -- --host 0.0.0.0 --port 3000 --strictPort"
 
 # 2) IsoSmart (8001 / 3001)
 start_process \
@@ -104,7 +127,7 @@ start_process \
   "isosmart_frontend" \
   "$BASE_DIR/isosmart/frontend" \
   "isosmart/frontend/node_modules/.bin/vite.*--port 3001|vite --host 0.0.0.0 --port 3001" \
-  "npm run dev -- --host 0.0.0.0 --port 3001"
+  "npm run dev -- --host 0.0.0.0 --port 3001 --strictPort"
 
 # 3) Control Horas (3002 / 5174)
 start_control_horas_db
@@ -119,7 +142,7 @@ start_process \
   "control_horas_frontend" \
   "$BASE_DIR/Control_Horas_Desarrollo/frontend" \
   "Control_Horas_Desarrollo/frontend/node_modules/.bin/vite.*--port 5174|vite --host 0.0.0.0 --port 5174" \
-  "npm run dev -- --host 0.0.0.0 --port 5174"
+  "npm run dev -- --host 0.0.0.0 --port 5174 --strictPort"
 
 # 4) Condominios (compat: 3003 / 5176, standard: 4000 / 5175)
 if [[ "$CONDOMINIOS_MODE" == "standard" ]]; then
@@ -140,7 +163,7 @@ start_process \
   "condominios_frontend" \
   "$BASE_DIR/Sistema_Control_Condominios/frontend" \
   "Sistema_Control_Condominios/frontend/node_modules/.bin/vite.*--port $CONDO_FRONTEND_PORT|vite --host 0.0.0.0 --port $CONDO_FRONTEND_PORT" \
-  "npm run dev -- --host 0.0.0.0 --port $CONDO_FRONTEND_PORT"
+  "npm run dev -- --host 0.0.0.0 --port $CONDO_FRONTEND_PORT --strictPort"
 
 # 5) VulnGuard_IA (docker compose)
 start_vulnguard
@@ -150,7 +173,7 @@ start_process \
   "bot_cryptp_api" \
   "$BASE_DIR/BOT_Cryptp" \
   "uvicorn app:app --host 0.0.0.0 --port 8100" \
-  "if [[ -x /home/aplicacion/projects/.venv/bin/python ]]; then /home/aplicacion/projects/.venv/bin/python -m uvicorn app:app --host 0.0.0.0 --port 8100 --reload; else python3 -m uvicorn app:app --host 0.0.0.0 --port 8100 --reload; fi"
+  "if [[ -x /home/aplicacion/projects/BOT_Cryptp/venv/bin/python ]]; then /home/aplicacion/projects/BOT_Cryptp/venv/bin/python -m uvicorn app:app --host 0.0.0.0 --port 8100 --reload; elif [[ -x /home/aplicacion/projects/BOT_Cryptp/.venv/bin/python ]]; then /home/aplicacion/projects/BOT_Cryptp/.venv/bin/python -m uvicorn app:app --host 0.0.0.0 --port 8100 --reload; else python3 -m uvicorn app:app --host 0.0.0.0 --port 8100 --reload; fi"
 
 # 7) Landing (4173)
 start_process \
