@@ -11,9 +11,9 @@ export function Hero() {
             <ShieldCheck size={16} aria-hidden="true" />
             Plataforma SaaS para sistemas de gestión ISO
           </p>
-          <h1>Gestiona tus procesos ISO de forma inteligente, ordenada y digital</h1>
+          <h1>Gestión ISO inteligente, ordenada y digital</h1>
           <p className="hero-lead">
-            ISO SMART centraliza documentación, evidencias, auditorías, planes de acción y seguimiento de cumplimiento en una plataforma moderna diseñada para empresas que buscan control, eficiencia y mejora continua.
+            ISO SMART centraliza documentación, evidencias, auditorías, planes de acción y seguimiento de cumplimiento en una plataforma moderna para empresas que necesitan control, trazabilidad y mejora continua.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={links.demo}>

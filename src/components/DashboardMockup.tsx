@@ -13,7 +13,7 @@ export function DashboardMockup({ variant = 'section' }: DashboardMockupProps) {
           <span className="window-dot" />
           <span className="window-dot" />
         </div>
-        <strong>ISO SMART Control Center</strong>
+        <strong>Panel ejecutivo ISO SMART</strong>
       </div>
       <div className="mockup-content">
         <aside className="mockup-sidebar" aria-hidden="true">
@@ -32,12 +32,12 @@ export function DashboardMockup({ variant = 'section' }: DashboardMockupProps) {
             <article>
               <FileText size={18} />
               <strong>124</strong>
-              <span>Documentos</span>
+              <span>Docs controlados</span>
             </article>
             <article>
               <AlertTriangle size={18} />
               <strong>9</strong>
-              <span>Hallazgos abiertos</span>
+              <span>Hallazgos</span>
             </article>
           </div>
           <div className="mockup-panel">
