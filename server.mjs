@@ -5,7 +5,9 @@ import { extname, join, normalize } from 'path';
 import { cwd, env } from 'process';
 
 const PORT = Number(env.PORT || 4173);
-const ROOT = cwd();
+const HOST = env.HOST || '0.0.0.0';
+const PROJECT_ROOT = cwd();
+const ROOT = existsSync(join(PROJECT_ROOT, 'dist')) ? join(PROJECT_ROOT, 'dist') : PROJECT_ROOT;
 const ANALYTICS_PROXY_URL = env.ADMINAPPS_ANALYTICS_ENDPOINT || 'http://127.0.0.1:8000/api/integration/landing-analytics/events/';
 const ANALYTICS_PROXY_KEY = env.LANDING_ANALYTICS_API_KEY || '';
 
@@ -20,6 +22,7 @@ const MIME_TYPES = {
   '.jpeg': 'image/jpeg',
   '.webp': 'image/webp',
   '.ico': 'image/x-icon',
+  '.ttf': 'font/ttf',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
 };
@@ -32,7 +35,7 @@ function withSecurityHeaders(res) {
   res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
+    "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'"
   );
 }
 
@@ -101,14 +104,24 @@ createServer(async (req, res) => {
   }
 
   const rawPath = req.url.split('?')[0];
+  if (rawPath === '/isosmart.html') {
+    res.statusCode = 301;
+    res.setHeader('Location', '/');
+    res.end();
+    return;
+  }
+
   const requestPath = rawPath === '/' ? '/index.html' : rawPath;
-  const filePath = resolvePath(requestPath);
+  let filePath = resolvePath(requestPath);
 
   if (!filePath || !existsSync(filePath) || statSync(filePath).isDirectory()) {
-    res.statusCode = 404;
-    res.setHeader('Content-Type', 'text/plain; charset=utf-8');
-    res.end('Not Found');
-    return;
+    filePath = resolvePath('/index.html');
+    if (!filePath || !existsSync(filePath)) {
+      res.statusCode = 404;
+      res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+      res.end('Not Found');
+      return;
+    }
   }
 
   const extension = extname(filePath).toLowerCase();
@@ -120,6 +133,6 @@ createServer(async (req, res) => {
     res.setHeader('Cache-Control', 'public, max-age=3600');
   }
   createReadStream(filePath).pipe(res);
-}).listen(PORT, '0.0.0.0', () => {
-  console.log(`Landing running on http://0.0.0.0:${PORT}`);
+}).listen(PORT, HOST, () => {
+  console.log(`Landing running on http://${HOST}:${PORT}`);
 });
