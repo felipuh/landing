@@ -12,7 +12,7 @@ export function TargetAudience() {
         <SectionHeader
           eyebrow="Para quién es"
           title="Para organizaciones que necesitan demostrar control, no solo administrarlo"
-          description="ISO SMART encaja en empresas y equipos que deben coordinar documentos, evidencias, auditorías y responsables con trazabilidad."
+          description="ISO SMART AI encaja en empresas y equipos que deben coordinar documentos, evidencias, auditorías y responsables con trazabilidad."
           align="center"
         />
 
@@ -21,7 +21,7 @@ export function TargetAudience() {
             <span className="audience-kicker">Perfil ideal</span>
             <h3>Equipos con procesos ISO activos, auditorías frecuentes y evidencia dispersa.</h3>
             <p>
-              Cuando el cumplimiento depende de correos, hojas de cálculo o carpetas compartidas, ISO SMART aporta una capa clara de orden, seguimiento y visibilidad gerencial.
+              Cuando el cumplimiento depende de correos, hojas de cálculo o carpetas compartidas, ISO SMART AI aporta una capa clara de orden, seguimiento y visibilidad gerencial.
             </p>
             <div className="audience-profile-tags">
               <span>Calidad</span>

@@ -10,7 +10,7 @@ export function Differentiators() {
         <SectionHeader
           eyebrow="Diferenciadores"
           title="Una plataforma operativa para gestionar ISO con trazabilidad real"
-          description="ISO SMART combina estructura documental, seguimiento de responsables y visibilidad ejecutiva para que el sistema de gestión avance con menos fricción."
+          description="ISO SMART AI combina estructura documental, seguimiento de responsables y visibilidad ejecutiva para que el sistema de gestión avance con menos fricción."
           align="center"
         />
 
@@ -45,7 +45,7 @@ export function Differentiators() {
               <strong>Carpetas, correos y hojas de cálculo sin contexto suficiente.</strong>
             </div>
             <div>
-              <span>Con ISO SMART</span>
+              <span>Con ISO SMART AI</span>
               <strong>Procesos, responsables, evidencias y cambios conectados en una misma operación.</strong>
             </div>
           </aside>

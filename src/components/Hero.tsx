@@ -13,7 +13,7 @@ export function Hero() {
           </p>
           <h1>Gestión ISO inteligente, ordenada y digital</h1>
           <p className="hero-lead">
-            ISO SMART centraliza documentación, evidencias, auditorías, planes de acción y seguimiento de cumplimiento en una plataforma moderna para empresas que necesitan control, trazabilidad y mejora continua.
+            ISO SMART AI centraliza documentación, evidencias, auditorías, planes de acción y seguimiento de cumplimiento en una plataforma moderna para empresas que necesitan control, trazabilidad y mejora continua.
           </p>
           <div className="hero-actions">
             <a className="button button-primary" href={links.demo}>

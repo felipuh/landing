@@ -10,7 +10,7 @@ export function Benefits() {
         <SectionHeader
           eyebrow="Beneficios de negocio"
           title="Control operativo real para equipos que deben demostrar cumplimiento"
-          description="ISO SMART reduce el trabajo disperso y convierte la gestión ISO en información clara, trazable y útil para decidir."
+          description="ISO SMART AI reduce el trabajo disperso y convierte la gestión ISO en información clara, trazable y útil para decidir."
           align="center"
         />
 

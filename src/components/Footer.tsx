@@ -10,7 +10,7 @@ export function Footer() {
           <div className="footer-brand">
             <Logo />
             <p>
-              ISO SMART ayuda a empresas y equipos de calidad a administrar documentación, evidencias, auditorías y planes de acción con orden y trazabilidad.
+              ISO SMART AI ayuda a empresas y equipos de calidad a administrar documentación, evidencias, auditorías y planes de acción con orden y trazabilidad.
             </p>
             <a className="footer-mail" href="mailto:info@isosmart-ai.com">
               <Mail size={18} aria-hidden="true" />
@@ -36,7 +36,7 @@ export function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 ISO SMART. Todos los derechos reservados.</span>
+          <span>© 2026 ISO SMART AI. Todos los derechos reservados.</span>
           <span>Información comercial sujeta a validación durante la demo.</span>
         </div>
       </div>

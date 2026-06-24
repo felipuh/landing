@@ -6,14 +6,14 @@ type DashboardMockupProps = {
 
 export function DashboardMockup({ variant = 'section' }: DashboardMockupProps) {
   return (
-    <div className={`dashboard-mockup ${variant === 'hero' ? 'dashboard-hero' : ''}`} aria-label="Representación visual del dashboard ISO SMART">
+    <div className={`dashboard-mockup ${variant === 'hero' ? 'dashboard-hero' : ''}`} aria-label="Representación visual del dashboard ISO SMART AI">
       <div className="mockup-topbar">
         <div aria-hidden="true">
           <span className="window-dot" />
           <span className="window-dot" />
           <span className="window-dot" />
         </div>
-        <strong>Panel ejecutivo ISO SMART</strong>
+        <strong>Panel ejecutivo ISO SMART AI</strong>
       </div>
       <div className="mockup-content">
         <aside className="mockup-sidebar" aria-hidden="true">

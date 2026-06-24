@@ -17,7 +17,7 @@ export function Problem() {
         </div>
         <div className="problem-panel" aria-label="Riesgos operativos comunes">
           <div className="problem-panel-head">
-            <span>Riesgos que ISO SMART ordena</span>
+            <span>Riesgos que ISO SMART AI ordena</span>
             <strong>Antes de la auditoría</strong>
           </div>
           <div className="problem-list">

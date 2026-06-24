@@ -1,4 +1,17 @@
-<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect x="18" y="8" width="38" height="38" rx="10" transform="rotate(45 18 8)" fill="#1877F2"/>
-  <rect x="25" y="20" width="19" height="19" rx="4" transform="rotate(45 25 20)" stroke="white" stroke-width="4"/>
+<svg width="64" height="64" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ISO SMART AI">
+  <defs>
+    <linearGradient id="isoBlue" x1="24" y1="20" x2="96" y2="104" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2388FF"/>
+      <stop offset="1" stop-color="#0868E8"/>
+    </linearGradient>
+  </defs>
+  <path d="M23 45.5L59.5 24.5C63.1 22.4 67.5 22.4 71.1 24.5L96.5 39.2" stroke="url(#isoBlue)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23.5 45.5V75.8C23.5 79.9 25.7 83.7 29.3 85.8L55 100.8" stroke="url(#isoBlue)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M96.5 39.5V75.8C96.5 79.9 94.3 83.7 90.7 85.8L65.1 100.7" stroke="url(#isoBlue)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M23 45.5L60 67L96.5 39.5" stroke="url(#isoBlue)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M60 67V101" stroke="url(#isoBlue)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M46 33.7L70.5 48" stroke="url(#isoBlue)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40.5 63L55.8 71.9" stroke="url(#isoBlue)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M40.5 80L55.8 88.9" stroke="url(#isoBlue)" stroke-width="10" stroke-linecap="round"/>
+  <path d="M75.8 71.5L88.2 64.4V78.8L75.8 86V71.5Z" stroke="url(#isoBlue)" stroke-width="8" stroke-linejoin="round"/>
 </svg>

@@ -2,7 +2,7 @@
 	"name": "smart3ai-landing",
 	"version": "1.0.0",
 	"private": true,
-	"description": "Landing premium de ISO SMART",
+	"description": "Landing premium de ISO SMART AI",
 	"scripts": {
 		"dev": "vite --host 0.0.0.0",
 		"build": "tsc -b && vite build",

@@ -19,13 +19,6 @@ export function Header() {
             ))}
           </nav>
         </div>
-        <div className="nav-actions">
-          <a className="nav-email" href="mailto:info@isosmart-ai.com">info@isosmart-ai.com</a>
-          <a className="button button-primary nav-cta" href={links.demo}>
-            Solicitar demo
-            <ArrowRight size={18} aria-hidden="true" />
-          </a>
-        </div>
       </div>
     </header>
   );
