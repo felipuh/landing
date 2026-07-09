@@ -1,6 +1,7 @@
 logs/
 .DS_Store
 node_modules/
+test-results/
 .env
 .env.*
 !.env.example

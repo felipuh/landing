@@ -3,18 +3,21 @@
 ## Resumen ejecutivo
 
 Se ejecutó cierre técnico de la fase ISO Smart Landing V3 sobre el repositorio `landing`.
-El build productivo finalizó correctamente y la suite visual Playwright pasó en desktop y mobile tras levantar el servidor de preview requerido en `localhost:4177`.
+El build productivo finalizó correctamente y la suite visual Playwright pasó en desktop y mobile con evidencia actualizada.
 
-No se realizaron cambios visuales, de rutas, anchors, CTAs ni contenido comercial durante este cierre.
+No se realizaron cambios visuales, de rutas, anchors, CTAs ni contenido comercial durante este cierre. El dictamen visual es `GO CONTROLADO / PASS`, sin bloqueantes P0 ni P1.
+
+## Alcance de la fase
+
+- Cierre formal de ISO Smart Landing V3.
+- Validación técnica de build productivo.
+- Validación visual Playwright en desktop y mobile.
+- Registro de evidencia de screenshots.
+- Preparación de commit controlado, excluyendo artefactos temporales y archivos sensibles.
 
 ## Archivos modificados
 
-Estado observado antes de crear este reporte:
-
-- No había archivos tracked modificados.
-- Existía un artefacto no versionado fuera de la lista esperada: `test-results/.last-run.json`.
-
-Archivos esperados por alcance de la fase:
+Archivos de la fase versionados en el repositorio:
 
 - `src/styles.css`
 - `tests/landing.visual.spec.ts`
@@ -23,10 +26,19 @@ Archivos esperados por alcance de la fase:
 - `package-lock.json`
 - `dist/*`
 - `qa-screenshots/*`
-
-Archivo agregado en esta tarea:
-
 - `docs/landing/ISO_SMART_LANDING_V3_QA_CLOSURE.md`
+
+Archivos de housekeeping para commit controlado:
+
+- `.gitignore`
+- eliminación de `test-results/.last-run.json`
+
+Revisión de sensibles y basura temporal:
+
+- Sin `.env` versionado.
+- Sin credenciales detectadas por patrón de archivo.
+- Sin `node_modules/` versionado.
+- `test-results/` queda fuera de versionado como artefacto temporal de Playwright.
 
 ## Resultado de build
 
@@ -54,13 +66,13 @@ Comando ejecutado:
 npm run qa:screenshots
 ```
 
-Resultado final: OK.
+Resultado: OK.
 
-Detalle:
+Detalle final:
 
-- Primera ejecución: fallo de entorno por `ERR_CONNECTION_REFUSED` en `http://localhost:4177/inicio`, porque el servidor preview no estaba levantado.
-- Acción correctiva: se levantó `npm run qa:preview` en el puerto esperado.
-- Segunda ejecución: `2 passed`.
+- Desktop visual QA: passed.
+- Mobile visual QA: passed.
+- Total: `2 passed`.
 
 ## Dimensiones de screenshots
 
@@ -85,14 +97,24 @@ Detalle:
 - Colores oficiales conservados: azul `#1877F2` y negro/gris `#111111`.
 - No se realizaron cambios visuales adicionales durante el cierre.
 
+## Observaciones P2 no bloqueantes
+
+- `npm run qa:screenshots` depende de un preview server activo en `localhost:4177`; sería conveniente automatizarlo en una siguiente iteración para reducir fricción operativa.
+- Las capturas de QA se mantienen en `qa-screenshots/` como evidencia versionada del cierre.
+- Las observaciones visuales restantes son P2 y no bloquean publicación controlada.
+
 ## Limitaciones conocidas
 
 - `npm run qa:screenshots` requiere que `npm run qa:preview` esté activo en `localhost:4177`; el script no levanta el servidor automáticamente.
-- `test-results/.last-run.json` aparece como archivo no versionado generado por Playwright y no forma parte de la lista esperada para commit.
+- `test-results/` es salida temporal de Playwright y queda ignorado para no contaminar commits de release.
 - La validación de rutas, anchors, CTAs, logo y colores se basa en la suite visual y el contexto de QA proporcionado para este cierre.
 
 ## Dictamen final
 
-GO CONTROLADO.
+GO CONTROLADO / PASS.
 
-La fase ISO Smart Landing V3 queda técnicamente cerrada con build OK y QA visual OK. Antes de commit, excluir o limpiar `test-results/.last-run.json` y confirmar el set exacto de archivos a versionar.
+La fase ISO Smart Landing V3 queda técnicamente cerrada con build OK y QA visual OK. No hay P0 ni P1 bloqueantes.
+
+## Recomendación para siguiente fase
+
+Usar ISO Smart Landing V3 como base visual para ISO Smart MedSupplier, conservando la dirección de layout, densidad mobile optimizada, jerarquía de CTAs, tratamiento del logo oficial y paleta aprobada.
