@@ -1,22 +1,26 @@
-import { benefits } from '../data/content';
 import { SectionHeader } from './SectionHeader';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function Benefits() {
-  const [primaryBenefit, auditBenefit, manualBenefit, ...supportBenefits] = benefits;
+type BenefitsProps = {
+  product: ProductLandingContent;
+};
+
+export function Benefits({ product }: BenefitsProps) {
+  const [primaryBenefit, auditBenefit, manualBenefit, ...supportBenefits] = product.benefits.items;
 
   return (
     <section id="beneficios" className="section benefits-section">
       <div className="container">
         <SectionHeader
-          eyebrow="Beneficios de negocio"
-          title="Control operativo real para equipos que deben demostrar cumplimiento"
-          description="ISO SMART AI reduce el trabajo disperso y convierte la gestión ISO en información clara, trazable y útil para decidir."
+          eyebrow={product.benefits.eyebrow}
+          title={product.benefits.title}
+          description={product.benefits.description}
           align="center"
         />
 
         <div className="benefit-suite">
           <article className="benefit-impact-card">
-            <span className="benefit-kicker">Impacto esperado</span>
+            <span className="benefit-kicker">{product.benefits.primaryKicker}</span>
             <div className="benefit-impact-title">
               <span className="icon-box"><primaryBenefit.icon size={24} aria-hidden="true" /></span>
               <div>
@@ -25,17 +29,15 @@ export function Benefits() {
               </div>
             </div>
             <div className="benefit-scoreboard" aria-label="Indicadores de impacto">
-              <div>
-                <strong>1</strong>
-                <span>fuente central de documentos y evidencias</span>
-              </div>
-              <div>
-                <strong>24/7</strong>
-                <span>visibilidad para responsables y gerencia</span>
-              </div>
+              {product.benefits.scoreboards.map((scoreboard) => (
+                <div key={scoreboard.label}>
+                  <strong>{scoreboard.value}</strong>
+                  <span>{scoreboard.label}</span>
+                </div>
+              ))}
             </div>
             <div className="benefit-progress">
-              <span>Orden documental</span>
+              <span>{product.benefits.progressLabel}</span>
               <i aria-hidden="true" />
             </div>
           </article>

@@ -1,43 +1,47 @@
 import { ArrowUpRight, Mail } from 'lucide-react';
-import { links, navItems } from '../data/content';
 import { Logo } from './Logo';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function Footer() {
+type FooterProps = {
+  product: ProductLandingContent;
+};
+
+export function Footer({ product }: FooterProps) {
   return (
-    <footer id="contacto" className="footer">
+    <footer className="footer">
       <div className="container">
         <div className="footer-panel">
           <div className="footer-brand">
-            <Logo />
+            <Logo product={product} />
             <p>
-              ISO SMART AI ayuda a empresas y equipos de calidad a administrar documentación, evidencias, auditorías y planes de acción con orden y trazabilidad.
+              {product.footer.description}
             </p>
-            <a className="footer-mail" href="mailto:info@isosmart-ai.com">
+            <a className="footer-mail" href={`mailto:${product.email}`}>
               <Mail size={18} aria-hidden="true" />
-              info@isosmart-ai.com
+              {product.email}
             </a>
           </div>
 
           <nav className="footer-nav" aria-label="Links internos">
-            <span>Mapa del sitio</span>
-            {navItems.map((item) => (
+            <span>{product.footer.navLabel}</span>
+            {product.navItems.map((item) => (
               <a key={item.href} href={item.href}>{item.label}</a>
             ))}
           </nav>
 
           <div className="footer-contact-card">
-            <span>Contacto comercial</span>
-            <strong>Agenda una conversación para evaluar cómo digitalizar tu gestión ISO.</strong>
-            <a href={links.demo}>
-              Solicitar demo
+            <span>{product.footer.contactLabel}</span>
+            <strong>{product.footer.contactText}</strong>
+            <a href={product.links.demo}>
+              {product.footer.contactCta}
               <ArrowUpRight size={18} aria-hidden="true" />
             </a>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <span>© 2026 ISO SMART AI. Todos los derechos reservados.</span>
-          <span>Información comercial sujeta a validación durante la demo.</span>
+          <span>{product.footer.legal}</span>
+          <span>{product.footer.disclaimer}</span>
         </div>
       </div>
     </footer>

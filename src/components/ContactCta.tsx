@@ -1,34 +1,42 @@
 import { ArrowRight, CalendarCheck2, Mail, MessageCircle } from 'lucide-react';
-import { links } from '../data/content';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function ContactCta() {
+type ContactCtaProps = {
+  product: ProductLandingContent;
+};
+
+export function ContactCta({ product }: ContactCtaProps) {
   return (
     <section id="contacto" className="section final-cta-section">
       <div className="container final-cta">
         <div className="final-cta-copy">
-          <p className="eyebrow">Siguiente paso</p>
-          <h2>Lleva tu sistema ISO a una operación digital más clara</h2>
+          <p className="eyebrow">{product.contact.eyebrow}</p>
+          <h2>{product.contact.title}</h2>
           <p>
-            Agenda una demo de ISO SMART AI y revisemos cómo centralizar documentos, evidencias, auditorías y planes de acción en un entorno trazable.
+            {product.contact.description}
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href={links.demo}>
-              Solicitar demo
+            <a className="button button-primary" href={product.links.demo}>
+              {product.contact.primaryCta}
               <ArrowRight size={18} aria-hidden="true" />
             </a>
-            <a className="button button-secondary" href={links.whatsapp} target="_blank" rel="noreferrer">
+            <a className="button button-secondary" href={product.links.whatsapp} target="_blank" rel="noreferrer">
               <MessageCircle size={18} aria-hidden="true" />
-              Contactar por WhatsApp
+              {product.contact.secondaryCta}
             </a>
           </div>
         </div>
 
         <aside className="final-cta-card" aria-label="Información de contacto">
-          <span>Demo comercial</span>
-          <strong>Una revisión rápida para entender tu operación actual y los próximos pasos.</strong>
+          <span>{product.contact.cardLabel}</span>
+          <strong>{product.contact.cardText}</strong>
           <div className="final-cta-card-list">
-            <p><CalendarCheck2 size={18} aria-hidden="true" /> Revisión de procesos ISO actuales</p>
-            <p><Mail size={18} aria-hidden="true" /> info@isosmart-ai.com</p>
+            {product.contact.cardItems.map((item, index) => (
+              <p key={item}>
+                {index === 0 ? <CalendarCheck2 size={18} aria-hidden="true" /> : <Mail size={18} aria-hidden="true" />}
+                {item}
+              </p>
+            ))}
           </div>
         </aside>
       </div>

@@ -1,27 +1,31 @@
 import { AlertTriangle, CircleAlert } from 'lucide-react';
-import { problemItems } from '../data/content';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function Problem() {
+type ProblemProps = {
+  product: ProductLandingContent;
+};
+
+export function Problem({ product }: ProblemProps) {
   return (
     <section className="section problem-section">
       <div className="container problem-shell">
         <div className="problem-copy">
           <p className="eyebrow">
             <AlertTriangle size={16} aria-hidden="true" />
-            El problema
+            {product.problem.eyebrow}
           </p>
-          <h2>La gestión ISO se vuelve frágil cuando depende de archivos dispersos</h2>
+          <h2>{product.problem.title}</h2>
           <p>
-            Muchas empresas conocen sus procesos, pero pierden control cuando la documentación, las evidencias y los compromisos viven entre correos, carpetas y hojas de cálculo.
+            {product.problem.description}
           </p>
         </div>
         <div className="problem-panel" aria-label="Riesgos operativos comunes">
           <div className="problem-panel-head">
-            <span>Riesgos que ISO SMART AI ordena</span>
-            <strong>Antes de la auditoría</strong>
+            <span>{product.problem.panelTitle}</span>
+            <strong>{product.problem.panelContext}</strong>
           </div>
           <div className="problem-list">
-            {problemItems.map((item, index) => (
+            {product.problem.items.map((item, index) => (
               <article key={item}>
                 <span className="problem-index">{String(index + 1).padStart(2, '0')}</span>
                 <CircleAlert size={18} aria-hidden="true" />
@@ -30,8 +34,8 @@ export function Problem() {
             ))}
           </div>
           <div className="problem-panel-foot">
-            <span>Resultado habitual</span>
-            <strong>Menos trazabilidad, más retrabajo y baja visibilidad gerencial.</strong>
+            <span>{product.problem.footerLabel}</span>
+            <strong>{product.problem.footerText}</strong>
           </div>
         </div>
       </div>

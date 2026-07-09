@@ -1,31 +1,33 @@
-import { Benefits } from './components/Benefits';
-import { ContactCta } from './components/ContactCta';
-import { DashboardShowcase } from './components/DashboardShowcase';
-import { Differentiators } from './components/Differentiators';
-import { Features } from './components/Features';
-import { Footer } from './components/Footer';
-import { Header } from './components/Header';
-import { Hero } from './components/Hero';
-import { Problem } from './components/Problem';
-import { Solution } from './components/Solution';
-import { TargetAudience } from './components/TargetAudience';
+import { useEffect } from 'react';
+import { ProductLanding } from './components/ProductLanding';
+import { isoSmart } from './data/products/isoSmart';
+import { medSupplier } from './data/products/medSupplier';
+import type { ProductLandingContent } from './data/products/types';
+
+function resolveProductByPath(pathname: string): ProductLandingContent {
+  if (pathname === '/medsupplier' || pathname === '/medsupplier.html') {
+    return medSupplier;
+  }
+
+  return isoSmart;
+}
+
+function setMetaContent(selector: string, content: string) {
+  const element = document.querySelector<HTMLMetaElement>(selector);
+  if (element) {
+    element.content = content;
+  }
+}
 
 export function App() {
-  return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Problem />
-        <Solution />
-        <Features />
-        <Benefits />
-        <TargetAudience />
-        <DashboardShowcase />
-        <Differentiators />
-        <ContactCta />
-      </main>
-      <Footer />
-    </>
-  );
+  const product = resolveProductByPath(window.location.pathname);
+
+  useEffect(() => {
+    document.title = product.metadata.title;
+    setMetaContent('meta[name="description"]', product.metadata.description);
+    setMetaContent('meta[property="og:title"]', product.metadata.ogTitle);
+    setMetaContent('meta[property="og:description"]', product.metadata.ogDescription);
+  }, [product]);
+
+  return <ProductLanding product={product} />;
 }

@@ -1,29 +1,31 @@
-import { differentiators } from '../data/content';
 import { SectionHeader } from './SectionHeader';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function Differentiators() {
-  const [isoDesigned, traceability, modular, technology] = differentiators;
+type DifferentiatorsProps = {
+  product: ProductLandingContent;
+};
+
+export function Differentiators({ product }: DifferentiatorsProps) {
+  const [isoDesigned, traceability, modular, technology] = product.differentiators.items;
 
   return (
     <section className="section differentiators-section">
       <div className="container">
         <SectionHeader
-          eyebrow="Diferenciadores"
-          title="Una plataforma operativa para gestionar ISO con trazabilidad real"
-          description="ISO SMART AI combina estructura documental, seguimiento de responsables y visibilidad ejecutiva para que el sistema de gestión avance con menos fricción."
+          eyebrow={product.differentiators.eyebrow}
+          title={product.differentiators.title}
+          description={product.differentiators.description}
           align="center"
         />
 
         <div className="differentiator-suite">
           <article className="differentiator-prime">
-            <span className="differentiator-kicker">No es solo almacenamiento</span>
+            <span className="differentiator-kicker">{product.differentiators.primaryKicker}</span>
             <span className="icon-box"><isoDesigned.icon size={25} aria-hidden="true" /></span>
             <h3>{isoDesigned.title}</h3>
             <p>{isoDesigned.text}</p>
             <div className="differentiator-prime-points">
-              <span>Documentación</span>
-              <span>Evidencia</span>
-              <span>Auditoría</span>
+              {product.differentiators.primaryPoints.map((point) => <span key={point}>{point}</span>)}
             </div>
           </article>
 
@@ -39,14 +41,14 @@ export function Differentiators() {
             ))}
           </div>
 
-          <aside className="differentiator-compare" aria-label="Comparación con gestión tradicional">
+          <aside className="differentiator-compare" aria-label={product.differentiators.compareLabel}>
             <div>
-              <span>Antes</span>
-              <strong>Carpetas, correos y hojas de cálculo sin contexto suficiente.</strong>
+              <span>{product.differentiators.beforeTitle}</span>
+              <strong>{product.differentiators.beforeText}</strong>
             </div>
             <div>
-              <span>Con ISO SMART AI</span>
-              <strong>Procesos, responsables, evidencias y cambios conectados en una misma operación.</strong>
+              <span>{product.differentiators.afterTitle}</span>
+              <strong>{product.differentiators.afterText}</strong>
             </div>
           </aside>
         </div>

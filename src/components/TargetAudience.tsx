@@ -1,8 +1,12 @@
-import { audiences } from '../data/content';
 import { SectionHeader } from './SectionHeader';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function TargetAudience() {
-  const [certified, certificationProcess, consultant, quality, compliance, operations, spreadsheet] = audiences;
+type TargetAudienceProps = {
+  product: ProductLandingContent;
+};
+
+export function TargetAudience({ product }: TargetAudienceProps) {
+  const [certified, certificationProcess, consultant, quality, compliance, operations, spreadsheet] = product.audience.items;
   const coreAudiences = [certified, certificationProcess, consultant, quality];
   const leadershipAudiences = [compliance, operations, spreadsheet];
 
@@ -10,28 +14,26 @@ export function TargetAudience() {
     <section id="para-quien-es" className="section audience-section">
       <div className="container">
         <SectionHeader
-          eyebrow="Para quién es"
-          title="Para organizaciones que necesitan demostrar control, no solo administrarlo"
-          description="ISO SMART AI encaja en empresas y equipos que deben coordinar documentos, evidencias, auditorías y responsables con trazabilidad."
+          eyebrow={product.audience.eyebrow}
+          title={product.audience.title}
+          description={product.audience.description}
           align="center"
         />
 
         <div className="audience-suite">
           <article className="audience-profile-card">
-            <span className="audience-kicker">Perfil ideal</span>
-            <h3>Equipos con procesos ISO activos, auditorías frecuentes y evidencia dispersa.</h3>
+            <span className="audience-kicker">{product.audience.profileKicker}</span>
+            <h3>{product.audience.profileTitle}</h3>
             <p>
-              Cuando el cumplimiento depende de correos, hojas de cálculo o carpetas compartidas, ISO SMART AI aporta una capa clara de orden, seguimiento y visibilidad gerencial.
+              {product.audience.profileText}
             </p>
             <div className="audience-profile-tags">
-              <span>Calidad</span>
-              <span>Operaciones</span>
-              <span>Cumplimiento</span>
+              {product.audience.profileTags.map((tag) => <span key={tag}>{tag}</span>)}
             </div>
           </article>
 
           <div className="audience-column">
-            <span className="audience-group-label">Organizaciones y expertos</span>
+            <span className="audience-group-label">{product.audience.primaryGroupLabel}</span>
             <div className="audience-list audience-list-primary">
               {coreAudiences.map(({ icon: Icon, label }) => (
                 <article key={label}>
@@ -43,7 +45,7 @@ export function TargetAudience() {
           </div>
 
           <div className="audience-column audience-column-dark">
-            <span className="audience-group-label">Equipos que necesitan visibilidad</span>
+            <span className="audience-group-label">{product.audience.secondaryGroupLabel}</span>
             <div className="audience-list">
               {leadershipAudiences.map(({ icon: Icon, label }) => (
                 <article key={label}>

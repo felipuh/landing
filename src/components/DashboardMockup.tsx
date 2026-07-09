@@ -1,68 +1,58 @@
-import { AlertTriangle, CheckCircle2, Clock3, FileText, TrendingUp } from 'lucide-react';
+import { Clock3, TrendingUp } from 'lucide-react';
+import type { ProductLandingContent } from '../data/products/types';
 
 type DashboardMockupProps = {
+  product: ProductLandingContent;
   variant?: 'hero' | 'section';
 };
 
-export function DashboardMockup({ variant = 'section' }: DashboardMockupProps) {
+export function DashboardMockup({ product, variant = 'section' }: DashboardMockupProps) {
   return (
-    <div className={`dashboard-mockup ${variant === 'hero' ? 'dashboard-hero' : ''}`} aria-label="Representación visual del dashboard ISO SMART AI">
+    <div className={`dashboard-mockup ${variant === 'hero' ? 'dashboard-hero' : ''}`} aria-label={product.dashboard.mockupLabel}>
       <div className="mockup-topbar">
         <div aria-hidden="true">
           <span className="window-dot" />
           <span className="window-dot" />
           <span className="window-dot" />
         </div>
-        <strong>Panel ejecutivo ISO SMART AI</strong>
+        <strong>{product.dashboard.topbarTitle}</strong>
       </div>
       <div className="mockup-content">
         <aside className="mockup-sidebar" aria-hidden="true">
-          <span className="active">Cumplimiento</span>
-          <span>Documentos</span>
-          <span>Auditorías</span>
-          <span>Acciones</span>
+          {product.dashboard.sidebar.map((item, index) => (
+            <span key={item} className={index === 0 ? 'active' : undefined}>{item}</span>
+          ))}
         </aside>
         <div className="mockup-main">
           <div className="mockup-kpis">
-            <article>
-              <CheckCircle2 size={18} />
-              <strong>86%</strong>
-              <span>Cumplimiento</span>
-            </article>
-            <article>
-              <FileText size={18} />
-              <strong>124</strong>
-              <span>Docs controlados</span>
-            </article>
-            <article>
-              <AlertTriangle size={18} />
-              <strong>9</strong>
-              <span>Hallazgos</span>
-            </article>
+            {product.dashboard.kpis.map(({ icon: Icon, value, label }) => (
+              <article key={label}>
+                <Icon size={18} />
+                <strong>{value}</strong>
+                <span>{label}</span>
+              </article>
+            ))}
           </div>
           <div className="mockup-panel">
             <div className="panel-heading">
               <div>
-                <span>Auditoría interna Q2</span>
-                <strong>Plan de seguimiento</strong>
+                <span>{product.dashboard.panelOverline}</span>
+                <strong>{product.dashboard.panelTitle}</strong>
               </div>
               <Clock3 size={18} />
             </div>
-            <div className="progress-line"><span style={{ width: '72%' }} /></div>
+            <div className="progress-line"><span style={{ width: product.dashboard.progressWidth }} /></div>
             <ul className="mockup-list">
-              <li><span /> Evidencias de proceso comercial <strong>Completado</strong></li>
-              <li><span /> Acciones correctivas vencidas <strong>2 pendientes</strong></li>
-              <li><span /> Revisión documental mensual <strong>En progreso</strong></li>
+              {product.dashboard.tasks.map((task) => (
+                <li key={task.label}><span /> {task.label} <strong>{task.status}</strong></li>
+              ))}
             </ul>
           </div>
           <div className="mockup-chart" aria-hidden="true">
             <TrendingUp size={18} />
-            <span style={{ height: '38%' }} />
-            <span style={{ height: '58%' }} />
-            <span style={{ height: '46%' }} />
-            <span style={{ height: '78%' }} />
-            <span style={{ height: '68%' }} />
-            <span style={{ height: '88%' }} />
+            {product.dashboard.chartHeights.map((height, index) => (
+              <span key={`${height}-${index}`} style={{ height }} />
+            ))}
           </div>
         </div>
       </div>

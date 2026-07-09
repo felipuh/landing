@@ -1,8 +1,12 @@
-import { features } from '../data/content';
 import { SectionHeader } from './SectionHeader';
+import type { ProductLandingContent } from '../data/products/types';
 
-export function Features() {
-  const [primaryFeature, ...supportFeatures] = features;
+type FeaturesProps = {
+  product: ProductLandingContent;
+};
+
+export function Features({ product }: FeaturesProps) {
+  const [primaryFeature, ...supportFeatures] = product.features.items;
   const operationalFeatures = supportFeatures.slice(0, 4);
   const governanceFeatures = supportFeatures.slice(4);
 
@@ -10,29 +14,27 @@ export function Features() {
     <section id="funcionalidades" className="section features-section">
       <div className="container">
         <SectionHeader
-          eyebrow="Funcionalidades"
-          title="Módulos diseñados para controlar el sistema ISO sin aumentar la carga manual"
-          description="Documentos, evidencias, auditorías, hallazgos y acciones conectados en una experiencia clara para equipos de calidad, cumplimiento y operaciones."
+          eyebrow={product.features.eyebrow}
+          title={product.features.title}
+          description={product.features.description}
           align="center"
         />
 
         <div className="feature-suite">
           <article className="feature-hero-card">
-            <span className="feature-kicker">Módulo central</span>
+            <span className="feature-kicker">{product.features.primaryKicker}</span>
             <span className="icon-box"><primaryFeature.icon size={24} aria-hidden="true" /></span>
             <h3>{primaryFeature.title}</h3>
             <p>{primaryFeature.text}</p>
             <div className="feature-hero-meta">
-              <span>Versiones</span>
-              <span>Vigencias</span>
-              <span>Responsables</span>
+              {product.features.primaryMeta.map((item) => <span key={item}>{item}</span>)}
             </div>
           </article>
 
           <div className="feature-lane">
             <div className="feature-lane-head">
-              <span>Operación diaria</span>
-              <strong>Seguimiento controlado</strong>
+              <span>{product.features.operationLabel}</span>
+              <strong>{product.features.operationTitle}</strong>
             </div>
             {operationalFeatures.map(({ icon: Icon, title, text }) => (
               <article className="feature-row" key={title}>
@@ -57,8 +59,8 @@ export function Features() {
         </div>
 
         <div className="feature-footer-panel">
-          <span>Resultado</span>
-          <strong>Una operación ISO más visible, trazable y preparada para auditorías.</strong>
+          <span>{product.features.resultLabel}</span>
+          <strong>{product.features.resultText}</strong>
         </div>
       </div>
     </section>
