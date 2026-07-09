@@ -43,8 +43,12 @@ export function DashboardMockup({ product, variant = 'section' }: DashboardMocku
             </div>
             <div className="progress-line"><span style={{ width: product.dashboard.progressWidth }} /></div>
             <ul className="mockup-list">
-              {product.dashboard.tasks.map((task) => (
-                <li key={task.label}><span /> {task.label} <strong>{task.status}</strong></li>
+              {product.dashboard.tasks.map((task, index) => (
+                <li key={task.label}>
+                  <span className={`task-dot task-dot-${index + 1}`} />
+                  {task.label}
+                  <strong className={`task-status task-status-${index + 1}`}>{task.status}</strong>
+                </li>
               ))}
             </ul>
           </div>
