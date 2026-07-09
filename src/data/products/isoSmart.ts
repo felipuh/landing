@@ -45,6 +45,14 @@ export const isoSmart: ProductLandingContent = {
   email: 'info@isosmart-ai.com',
   links,
   navItems,
+  theme: {
+    brand: '#1877F2',
+    brand700: '#0F5FD1',
+    brand900: '#073B84',
+    accent: '#16B8C5',
+    risk: '#C2410C',
+    soft: '#F7FAFE',
+  },
   metadata: {
     title: 'ISO SMART AI | Gestión ISO digital',
     description:
@@ -189,9 +197,9 @@ export const isoSmart: ProductLandingContent = {
     panelTitle: 'Plan de seguimiento',
     progressWidth: '72%',
     tasks: [
-      { label: 'Evidencias de proceso comercial', status: 'Completado' },
-      { label: 'Acciones correctivas vencidas', status: '2 pendientes' },
-      { label: 'Revisión documental mensual', status: 'En progreso' },
+      { label: 'Evidencias de proceso comercial', status: 'Completado', tone: 'ok' },
+      { label: 'Acciones correctivas vencidas', status: '2 pendientes', tone: 'expired' },
+      { label: 'Revisión documental mensual', status: 'En progreso', tone: 'pending' },
     ],
     chartHeights: ['38%', '58%', '46%', '78%', '68%', '88%'],
     stats: [

@@ -113,6 +113,7 @@ export type DashboardCopy = SectionCopy & {
   tasks: Array<{
     label: string;
     status: string;
+    tone?: 'ok' | 'pending' | 'expired' | 'risk';
   }>;
   chartHeights: string[];
   stats: Array<{
@@ -150,6 +151,15 @@ export type FooterCopy = {
   disclaimer: string;
 };
 
+export type ProductTheme = {
+  brand: string;
+  brand700: string;
+  brand900: string;
+  accent: string;
+  risk: string;
+  soft: string;
+};
+
 export type ProductLandingContent = {
   key: ProductKey;
   brandName: string;
@@ -158,6 +168,7 @@ export type ProductLandingContent = {
   email: string;
   links: LinkSet;
   navItems: NavItem[];
+  theme: ProductTheme;
   metadata: {
     title: string;
     description: string;

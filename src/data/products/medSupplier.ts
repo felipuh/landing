@@ -47,6 +47,14 @@ export const medSupplier: ProductLandingContent = {
   email: 'info@isosmart-ai.com',
   links,
   navItems,
+  theme: {
+    brand: '#0E9F9A',
+    brand700: '#0F766E',
+    brand900: '#134E4A',
+    accent: '#2563EB',
+    risk: '#C2410C',
+    soft: '#E6F7F6',
+  },
   metadata: {
     title: 'ISO Smart MedSupplier | Cumplimiento para proveedores médicos',
     description:
@@ -57,21 +65,21 @@ export const medSupplier: ProductLandingContent = {
   },
   hero: {
     eyebrow: 'Plataforma SaaS para proveedores médicos',
-    title: 'Cumplimiento documental y trazabilidad para la cadena de suministro médica',
+    title: 'Cumplimiento documental y riesgo trazable para proveedores médicos',
     description:
-      'ISO Smart MedSupplier centraliza documentos, evidencias regulatorias, auditoría de proveedores, vencimientos y riesgos para empresas que deben demostrar control en entornos médicos exigentes.',
+      'Centraliza expedientes, evidencias regulatorias, auditorías, vencimientos y riesgos por proveedor para operar una cadena médica preparada, controlada y auditable.',
     primaryCta: 'Solicitar demo',
     secondaryCta: 'Ver funcionalidades',
     secondaryHref: '#funcionalidades',
     trustPoints: [
-      { icon: CheckCircle2, label: 'Evidencias regulatorias' },
-      { icon: LockKeyhole, label: 'Riesgo trazable' },
-      { icon: FileCheck2, label: 'Auditoría preparada' },
+      { icon: CheckCircle2, label: 'Estados OK y pendientes' },
+      { icon: LockKeyhole, label: 'Riesgo por proveedor' },
+      { icon: FileCheck2, label: 'Evidencia auditable' },
     ],
   },
   problem: {
     eyebrow: 'El problema',
-    title: 'El cumplimiento de proveedores médicos se vuelve riesgoso cuando la evidencia queda dispersa',
+    title: 'Riesgo documental en proveedores médicos',
     description:
       'Los equipos de calidad, compras y asuntos regulatorios necesitan demostrar vigencia documental, trazabilidad de aprobaciones y control de riesgos sin reconstruir información antes de cada auditoría.',
     panelTitle: 'Riesgos que MedSupplier ordena',
@@ -87,9 +95,9 @@ export const medSupplier: ProductLandingContent = {
   },
   solution: {
     eyebrow: 'La solución',
-    title: 'Un centro de control para cumplimiento, riesgo y auditoría de proveedores médicos',
+    title: 'La solución MedSupplier para una cadena médica auditable',
     description:
-      'ISO Smart MedSupplier conecta documentación, evidencias, vencimientos, evaluaciones y planes de seguimiento para que la cadena de suministro médica opere con trazabilidad.',
+      'ISO Smart MedSupplier controla cumplimiento documental, vencimientos, evidencias regulatorias y riesgo por proveedor médico.',
     metrics: [
       { value: '1', label: 'expediente central por proveedor' },
       { value: '360°', label: 'trazabilidad documental y regulatoria' },
@@ -112,7 +120,7 @@ export const medSupplier: ProductLandingContent = {
   },
   features: {
     eyebrow: 'Funcionalidades',
-    title: 'Módulos para controlar proveedores médicos sin aumentar la carga manual',
+    title: 'Control de vencimientos, auditorías y evidencias regulatorias',
     description:
       'Documentos, evidencias regulatorias, auditorías de proveedores, vencimientos y riesgos conectados para equipos de calidad, compras y cumplimiento.',
     primaryKicker: 'Módulo central',
@@ -122,21 +130,21 @@ export const medSupplier: ProductLandingContent = {
     resultLabel: 'Resultado',
     resultText: 'Una cadena de suministro médica más visible, trazable y preparada para auditorías.',
     items: [
-      { icon: FileCheck2, title: 'Expediente documental del proveedor', text: 'Controla certificados, contratos, registros, versiones, vigencias y responsables por proveedor médico.' },
+      { icon: FileCheck2, title: 'Control de vencimientos', text: 'Certificados, contratos, registros sanitarios y aprobaciones muestran estado OK, pendiente, vencido o riesgo.' },
       { icon: Archive, title: 'Evidencias regulatorias', text: 'Relaciona evidencias con requisitos, auditorías, evaluaciones y decisiones de aprobación.' },
-      { icon: ClipboardCheck, title: 'Auditoría de proveedores', text: 'Planifica revisiones, listas de verificación, hallazgos y seguimiento de proveedores críticos.' },
-      { icon: FileSearch, title: 'Hallazgos y desviaciones', text: 'Clasifica riesgos, incumplimientos, observaciones y acciones hasta su cierre verificable.' },
+      { icon: ClipboardCheck, title: 'Auditorías de proveedores', text: 'Planifica revisiones, listas de verificación, hallazgos y seguimiento de proveedores críticos.' },
+      { icon: FileSearch, title: 'Hallazgos y desviaciones', text: 'Clasifica incumplimientos, observaciones, documentos vencidos y acciones hasta su cierre verificable.' },
       { icon: Route, title: 'Planes de seguimiento', text: 'Define acciones, responsables, fechas compromiso, avances y evidencias de cierre por proveedor.' },
-      { icon: ListChecks, title: 'Matriz de cumplimiento documental', text: 'Relaciona requisitos regulatorios, categorías de proveedor, documentos obligatorios y evidencias.' },
+      { icon: ListChecks, title: 'Matriz de cumplimiento por proveedor', text: 'Relaciona requisitos regulatorios, categorías de proveedor, documentos obligatorios, vigencias y evidencias.' },
       { icon: BarChart3, title: 'Indicadores de riesgo', text: 'Visualiza proveedores vencidos, documentos críticos, riesgos abiertos y avance de preparación para auditoría.' },
       { icon: KeyRound, title: 'Roles y permisos', text: 'Configura accesos por calidad, compras, asuntos regulatorios, auditoría o gerencia.' },
       { icon: Bell, title: 'Alertas de vencimiento', text: 'Anticipa certificados, aprobaciones, contratos y compromisos críticos antes de que expiren.' },
-      { icon: History, title: 'Historial y trazabilidad', text: 'Consulta cambios, aprobadores, evidencias y evolución de cada proveedor dentro del sistema.' },
+      { icon: History, title: 'Riesgo y trazabilidad', text: 'Consulta cambios, aprobadores, evidencias, documentos vencidos y evolución de riesgo por proveedor.' },
     ],
   },
   benefits: {
     eyebrow: 'Beneficios de negocio',
-    title: 'Control comercial y regulatorio para proveedores médicos críticos',
+    title: 'Beneficios para calidad, compras, cumplimiento y gerencia',
     description:
       'ISO Smart MedSupplier reduce trabajo disperso y convierte la gestión de proveedores médicos en información clara para decidir, auditar y mitigar riesgos.',
     primaryKicker: 'Impacto esperado',
@@ -183,9 +191,9 @@ export const medSupplier: ProductLandingContent = {
       'Visualiza cumplimiento documental, evidencias regulatorias, auditorías de proveedores, riesgos abiertos y preparación para auditoría sin reconstruir reportes manuales.',
     mockupLabel: 'Representación visual del dashboard ISO Smart MedSupplier',
     topbarTitle: 'Panel ejecutivo MedSupplier',
-    sidebar: ['Proveedores', 'Documentos', 'Auditorías', 'Riesgos'],
+    sidebar: ['Proveedores', 'Vencimientos', 'Auditorías', 'Riesgos'],
     kpis: [
-      { icon: CheckCircle2, value: '82%', label: 'Docs vigentes' },
+      { icon: CheckCircle2, value: '82%', label: 'OK documental' },
       { icon: FileText, value: '48', label: 'Proveedores' },
       { icon: AlertTriangle, value: '7', label: 'Riesgos abiertos' },
     ],
@@ -193,9 +201,10 @@ export const medSupplier: ProductLandingContent = {
     panelTitle: 'Preparación documental',
     progressWidth: '68%',
     tasks: [
-      { label: 'Evidencias regulatorias críticas', status: 'En revisión' },
-      { label: 'Certificados por vencer', status: '5 pendientes' },
-      { label: 'Evaluación de proveedor crítico', status: 'En progreso' },
+      { label: 'Evidencia regulatoria validada', status: 'OK', tone: 'ok' },
+      { label: 'Certificados por actualizar', status: 'Pendiente', tone: 'pending' },
+      { label: 'Registro sanitario vencido', status: 'Vencido', tone: 'expired' },
+      { label: 'Proveedor crítico sin plan', status: 'Riesgo', tone: 'risk' },
     ],
     chartHeights: ['42%', '62%', '52%', '74%', '66%', '84%'],
     stats: [
