@@ -5,7 +5,6 @@ export type ProductKey = 'isoSmart' | 'medSupplier';
 export type LinkSet = {
   demo: string;
   advisor: string;
-  whatsapp: string;
 };
 
 export type NavItem = {

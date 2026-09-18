@@ -16,6 +16,7 @@ export function DashboardMockup({ product, variant = 'section' }: DashboardMocku
           <span className="window-dot" />
         </div>
         <strong>{product.dashboard.topbarTitle}</strong>
+        <span className="demo-data-label">Datos demostrativos</span>
       </div>
       <div className="mockup-content">
         <aside className="mockup-sidebar" aria-hidden="true">
@@ -27,7 +28,7 @@ export function DashboardMockup({ product, variant = 'section' }: DashboardMocku
           <div className="mockup-kpis">
             {product.dashboard.kpis.map(({ icon: Icon, value, label }) => (
               <article key={label}>
-                <Icon size={18} />
+                <Icon size={18} aria-hidden="true" />
                 <strong>{value}</strong>
                 <span>{label}</span>
               </article>

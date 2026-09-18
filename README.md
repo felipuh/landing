@@ -33,3 +33,12 @@ LANDING_ANALYTICS_API_KEY="tu_clave_segura" ADMINAPPS_ANALYTICS_ENDPOINT="http:/
 ```
 
 Tambien puedes dejarlas persistentes en `.env` para que se carguen automaticamente en cada inicio del servidor.
+
+## Solicitudes de demo en AdminApps
+
+El formulario publica en el proxy local `/api/demo-requests/`. El navegador nunca recibe la clave de integración.
+
+- `LANDING_DEMO_API_KEY`: clave activa del servicio `landing_demo` en AdminApps.
+- `ADMINAPPS_DEMO_REQUEST_ENDPOINT`: endpoint interno de recepción.
+
+AdminApps conserva cada solicitud como un prospecto pre-tenant. La recepción no crea organizaciones ni usuarios automáticamente.

@@ -8,7 +8,7 @@ type DashboardShowcaseProps = {
 
 export function DashboardShowcase({ product }: DashboardShowcaseProps) {
   return (
-    <section className="section dashboard-section">
+    <section id="producto" className="section dashboard-section">
       <div className="container dashboard-grid">
         <div>
           <SectionHeader

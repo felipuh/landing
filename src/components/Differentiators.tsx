@@ -9,7 +9,7 @@ export function Differentiators({ product }: DifferentiatorsProps) {
   const [isoDesigned, traceability, modular, technology] = product.differentiators.items;
 
   return (
-    <section className="section differentiators-section">
+    <section id="confianza" className="section differentiators-section">
       <div className="container">
         <SectionHeader
           eyebrow={product.differentiators.eyebrow}

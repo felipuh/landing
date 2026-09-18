@@ -22,7 +22,7 @@ export function Hero({ product }: HeroProps) {
             {product.hero.description}
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href={product.links.demo}>
+            <a className="button button-primary" href="#contacto">
               {product.hero.primaryCta}
               <ArrowRight size={18} aria-hidden="true" />
             </a>
@@ -32,7 +32,7 @@ export function Hero({ product }: HeroProps) {
           </div>
           <div className="trust-row" aria-label="Puntos de confianza">
             {product.hero.trustPoints.map(({ icon: Icon, label }) => (
-              <span key={label}><Icon size={17} /> {label}</span>
+              <span key={label}><Icon size={17} aria-hidden="true" /> {label}</span>
             ))}
           </div>
         </div>

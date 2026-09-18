@@ -36,7 +36,7 @@ export function Solution({ product }: SolutionProps) {
               <span>{product.solution.flowNodes.second}</span>
             </div>
             <div className="flow-core">
-              <img className="flow-logo-icon" src="/iso-smart-ai-isotipo-azul.png" alt="" aria-hidden="true" />
+              <img className="flow-logo-icon" src="/iso-smart-ai-icon.svg" alt="" aria-hidden="true" decoding="async" />
               <strong>{product.solution.flowNodes.coreTitle}</strong>
               <small>{product.solution.flowNodes.coreSubtitle}</small>
             </div>

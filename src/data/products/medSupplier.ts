@@ -27,7 +27,6 @@ import type { ProductLandingContent } from './types';
 const links = {
   demo: 'mailto:info@isosmart-ai.com?subject=Solicitar%20demo%20ISO%20Smart%20MedSupplier',
   advisor: 'mailto:info@isosmart-ai.com?subject=Hablar%20con%20un%20asesor%20ISO%20Smart%20MedSupplier',
-  whatsapp: 'https://wa.me/50600000000?text=Hola%2C%20quiero%20conocer%20ISO%20Smart%20MedSupplier%20y%20solicitar%20una%20demo.',
 };
 
 const navItems = [

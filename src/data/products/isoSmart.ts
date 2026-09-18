@@ -25,15 +25,15 @@ import type { ProductLandingContent } from './types';
 const links = {
   demo: 'mailto:info@isosmart-ai.com?subject=Solicitar%20demo%20ISO%20SMART%20AI',
   advisor: 'mailto:info@isosmart-ai.com?subject=Hablar%20con%20un%20asesor%20ISO%20SMART%20AI',
-  whatsapp: 'https://wa.me/50600000000?text=Hola%2C%20quiero%20conocer%20ISO%20SMART%20AI%20y%20solicitar%20una%20demo.',
 };
 
 const navItems = [
   { label: 'Inicio', href: '#inicio' },
-  { label: 'Solución', href: '#solucion' },
+  { label: 'Cómo funciona', href: '#solucion' },
   { label: 'Funcionalidades', href: '#funcionalidades' },
-  { label: 'Beneficios', href: '#beneficios' },
-  { label: 'Para quién es', href: '#para-quien-es' },
+  { label: 'Producto', href: '#producto' },
+  { label: 'Confianza', href: '#confianza' },
+  { label: 'Preguntas', href: '#preguntas' },
   { label: 'Contacto', href: '#contacto' },
 ];
 
@@ -62,17 +62,17 @@ export const isoSmart: ProductLandingContent = {
       'Digitaliza tus procesos ISO, mejora la trazabilidad y prepara auditorías con mayor control desde una plataforma SaaS moderna.',
   },
   hero: {
-    eyebrow: 'Plataforma SaaS para sistemas de gestión ISO',
-    title: 'Gestión ISO inteligente, ordenada y digital',
+    eyebrow: 'Control documental y auditorías en un solo lugar',
+    title: 'Controla tu gestión ISO sin depender de Excel',
     description:
-      'ISO SMART AI centraliza documentación, evidencias, auditorías, planes de acción y seguimiento de cumplimiento en una plataforma moderna para empresas que necesitan control, trazabilidad y mejora continua.',
-    primaryCta: 'Solicitar demo',
-    secondaryCta: 'Ver funcionalidades',
-    secondaryHref: '#funcionalidades',
+      'Centraliza documentos, evidencias, responsables y hallazgos para preparar auditorías con trazabilidad y sin reconstruir información a última hora.',
+    primaryCta: 'Agendar demo de 20 minutos',
+    secondaryCta: 'Explorar el producto',
+    secondaryHref: '#producto',
     trustPoints: [
-      { icon: CheckCircle2, label: 'Trazabilidad documental' },
-      { icon: LockKeyhole, label: 'Roles y permisos' },
-      { icon: FileCheck2, label: 'Auditoría preparada' },
+      { icon: CheckCircle2, label: 'Adopción gradual' },
+      { icon: LockKeyhole, label: 'Control por roles' },
+      { icon: FileCheck2, label: 'Historial auditable' },
     ],
   },
   problem: {
@@ -232,8 +232,8 @@ export const isoSmart: ProductLandingContent = {
     title: 'Lleva tu sistema ISO a una operación digital más clara',
     description:
       'Agenda una demo de ISO SMART AI y revisemos cómo centralizar documentos, evidencias, auditorías y planes de acción en un entorno trazable.',
-    primaryCta: 'Solicitar demo',
-    secondaryCta: 'Contactar por WhatsApp',
+    primaryCta: 'Agendar demo',
+    secondaryCta: 'Escribir por correo',
     cardLabel: 'Demo comercial',
     cardText: 'Una revisión rápida para entender tu operación actual y los próximos pasos.',
     cardItems: ['Revisión de procesos ISO actuales', 'info@isosmart-ai.com'],

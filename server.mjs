@@ -10,6 +10,11 @@ const PROJECT_ROOT = cwd();
 const ROOT = existsSync(join(PROJECT_ROOT, 'dist')) ? join(PROJECT_ROOT, 'dist') : PROJECT_ROOT;
 const ANALYTICS_PROXY_URL = env.ADMINAPPS_ANALYTICS_ENDPOINT || 'http://127.0.0.1:8000/api/integration/landing-analytics/events/';
 const ANALYTICS_PROXY_KEY = env.LANDING_ANALYTICS_API_KEY || '';
+const DEMO_REQUEST_PROXY_URL = env.ADMINAPPS_DEMO_REQUEST_ENDPOINT || 'http://127.0.0.1:8000/api/integration/demo-requests/';
+const DEMO_REQUEST_PROXY_KEY = env.LANDING_DEMO_API_KEY || '';
+const DEMO_REQUEST_WINDOW_MS = 15 * 60 * 1000;
+const DEMO_REQUEST_LIMIT = 5;
+const demoRequestAttempts = new Map();
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -68,8 +73,62 @@ function readJsonBody(req) {
   });
 }
 
+function canAcceptDemoRequest(req) {
+  const client = req.socket.remoteAddress || 'unknown';
+  const now = Date.now();
+  const recent = (demoRequestAttempts.get(client) || []).filter(
+    (timestamp) => now - timestamp < DEMO_REQUEST_WINDOW_MS,
+  );
+  if (recent.length >= DEMO_REQUEST_LIMIT) return false;
+  recent.push(now);
+  demoRequestAttempts.set(client, recent);
+  return true;
+}
+
 createServer(async (req, res) => {
   withSecurityHeaders(res);
+
+  if (req.method === 'POST' && req.url === '/api/demo-requests/') {
+    try {
+      const payload = await readJsonBody(req);
+      if (String(payload.website || '').trim()) {
+        res.statusCode = 201;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify({ ok: true, accepted: true }));
+        return;
+      }
+      if (!canAcceptDemoRequest(req)) {
+        res.statusCode = 429;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify({ ok: false, error: 'rate_limit_exceeded' }));
+        return;
+      }
+      if (!DEMO_REQUEST_PROXY_KEY) {
+        res.statusCode = 503;
+        res.setHeader('Content-Type', 'application/json; charset=utf-8');
+        res.end(JSON.stringify({ ok: false, error: 'demo_request_proxy_not_configured' }));
+        return;
+      }
+
+      const upstream = await fetch(DEMO_REQUEST_PROXY_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-API-Key': DEMO_REQUEST_PROXY_KEY,
+        },
+        body: JSON.stringify(payload),
+      });
+      const responseBody = await upstream.text();
+      res.statusCode = upstream.status;
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      res.end(responseBody || JSON.stringify({ ok: upstream.ok }));
+    } catch {
+      res.statusCode = 400;
+      res.setHeader('Content-Type', 'application/json; charset=utf-8');
+      res.end(JSON.stringify({ ok: false, error: 'invalid_demo_request' }));
+    }
+    return;
+  }
 
   if (req.method === 'POST' && req.url === '/api/landing-analytics/events/') {
     try {
