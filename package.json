@@ -15,6 +15,7 @@
     	"qa": "npm run build && npm run qa:screenshots"
 	},
 	"dependencies": {
+		"@smart3ai/design-system": "file:vendor/smart3ai-design-system-1.0.0-beta.1.tgz",
 		"dotenv": "^17.4.1",
 		"lucide-react": "^1.21.0",
 		"react": "^19.2.7",

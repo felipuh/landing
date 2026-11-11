@@ -1,4 +1,4 @@
-@import "../../design-system/styles/platform.css";
+@import "@smart3ai/design-system/styles/platform.css";
 
 :root {
   --color-brand: var(--s3-color-brand-500);
