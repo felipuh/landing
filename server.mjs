@@ -1,13 +1,18 @@
 import 'dotenv/config';
 import { createServer } from 'http';
-import { createReadStream, existsSync, statSync } from 'fs';
-import { extname, join, normalize } from 'path';
+import { createReadStream, existsSync, realpathSync, statSync } from 'fs';
+import { pipeline } from 'stream/promises';
+import { extname, isAbsolute, join, relative, resolve, sep } from 'path';
 import { cwd, env } from 'process';
 
 const PORT = Number(env.PORT || 4173);
 const HOST = env.HOST || '0.0.0.0';
 const PROJECT_ROOT = cwd();
-const ROOT = existsSync(join(PROJECT_ROOT, 'dist')) ? join(PROJECT_ROOT, 'dist') : PROJECT_ROOT;
+const ROOT = join(PROJECT_ROOT, 'dist');
+if (!existsSync(ROOT) || !statSync(ROOT).isDirectory()) {
+  throw new Error('static_build_not_found');
+}
+const CANONICAL_ROOT = realpathSync(ROOT);
 const ANALYTICS_PROXY_URL = env.ADMINAPPS_ANALYTICS_ENDPOINT || 'http://127.0.0.1:8000/api/integration/landing-analytics/events/';
 const ANALYTICS_PROXY_KEY = env.LANDING_ANALYTICS_API_KEY || '';
 const DEMO_REQUEST_PROXY_URL = env.ADMINAPPS_DEMO_REQUEST_ENDPOINT || 'http://127.0.0.1:8000/api/integration/demo-requests/';
@@ -44,11 +49,43 @@ function withSecurityHeaders(res) {
   );
 }
 
+class HttpError extends Error {
+  constructor(statusCode) {
+    super(`http_${statusCode}`);
+    this.statusCode = statusCode;
+  }
+}
+
+function isWithinRoot(target) {
+  const pathFromRoot = relative(CANONICAL_ROOT, target);
+  return pathFromRoot === '' || (
+    pathFromRoot !== '..' &&
+    !pathFromRoot.startsWith(`..${sep}`) &&
+    !isAbsolute(pathFromRoot)
+  );
+}
+
 function resolvePath(urlPath) {
-  const safePath = normalize(decodeURIComponent(urlPath)).replace(/^\.+/, '');
-  const target = join(ROOT, safePath);
-  if (!target.startsWith(ROOT)) {
-    return null;
+  let decodedPath;
+  try {
+    decodedPath = decodeURIComponent(urlPath);
+  } catch {
+    throw new HttpError(400);
+  }
+
+  if (!decodedPath.startsWith('/') || decodedPath.includes('\0') || decodedPath.includes('\\')) {
+    throw new HttpError(400);
+  }
+  if (decodedPath.split('/').includes('..')) {
+    throw new HttpError(403);
+  }
+
+  const target = resolve(CANONICAL_ROOT, `.${decodedPath}`);
+  if (!isWithinRoot(target)) {
+    throw new HttpError(403);
+  }
+  if (existsSync(target) && !isWithinRoot(realpathSync(target))) {
+    throw new HttpError(403);
   }
   return target;
 }
@@ -85,7 +122,7 @@ function canAcceptDemoRequest(req) {
   return true;
 }
 
-createServer(async (req, res) => {
+async function routeRequest(req, res) {
   withSecurityHeaders(res);
 
   if (req.method === 'POST' && req.url === '/api/demo-requests/') {
@@ -157,7 +194,7 @@ createServer(async (req, res) => {
     } catch (error) {
       res.statusCode = 400;
       res.setHeader('Content-Type', 'application/json; charset=utf-8');
-      res.end(JSON.stringify({ ok: false, error: error.message || 'proxy_failed' }));
+      res.end(JSON.stringify({ ok: false, error: 'proxy_failed' }));
       return;
     }
   }
@@ -191,7 +228,26 @@ createServer(async (req, res) => {
   } else {
     res.setHeader('Cache-Control', 'public, max-age=3600');
   }
-  createReadStream(filePath).pipe(res);
+  await pipeline(createReadStream(filePath), res);
+}
+
+function sendError(res, statusCode) {
+  if (res.headersSent || res.writableEnded) {
+    if (!res.writableEnded) res.destroy();
+    return;
+  }
+  withSecurityHeaders(res);
+  res.statusCode = statusCode;
+  res.setHeader('Content-Type', 'text/plain; charset=utf-8');
+  res.end(statusCode === 400 ? 'Bad Request' : statusCode === 403 ? 'Forbidden' : 'Internal Server Error');
+}
+
+createServer((req, res) => {
+  routeRequest(req, res).catch((error) => {
+    const statusCode = error instanceof HttpError ? error.statusCode : 500;
+    if (statusCode === 500) console.error('request_failed');
+    sendError(res, statusCode);
+  });
 }).listen(PORT, HOST, () => {
   console.log(`Landing running on http://${HOST}:${PORT}`);
 });

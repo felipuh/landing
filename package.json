@@ -9,6 +9,7 @@
 		"preview": "vite preview --host 0.0.0.0",
 		"serve": "node server.mjs",
 		"start": "node server.mjs",
+		"test:server": "node --test tests/server.security.test.mjs",
 		"qa:build": "npm run build",
 		"qa:preview": "vite preview --host 0.0.0.0 --port 4177",
 		"qa:screenshots": "playwright test tests/landing.visual.spec.ts --reporter=line",
